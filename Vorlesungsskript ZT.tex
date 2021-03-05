@@ -6,59 +6,52 @@
 %\usepackage{showframe}
 
 \makeindex[title=Definitionen,intoc]
+\DeclareNewTOC[owner=jvfscript-de,listname=Dateiverzeichnis,type=files,types=files, name=Datei]{listoffiles}
+\renewcommand{\lecture}{%
+	\stepcounter{lecture}
+	\marginnote{Datei \thelecture}
+	\addxcontentsline{listoffiles}{section}[\thelecture]{Datei \thelecture}
+}
 
 %\renewcommand{\thechapter}{\S \arabic{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thethm}{\arabic{chapter}.\arabic{thm}}
 
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-
-%\includeonly{./lectures/cpt11}
-
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=blue,      
-	urlcolor=blue,
-	pdftitle={Vorlesungsskript Zahlentheorie},
-	bookmarks=true,
-	%	pdfpagemode=FullScreen,
-	bookmarksopen = true
+	pdftitle={Vorlesungsskript Zahlentheorie}
 }
 
+
+
+%\includeonly{./lectures/cpt01}
+
 \begin{document}
-	\frontmatter
+\frontmatter
 	\maketitle
-	
-	%	\setcounter{page}{1}
 	\tableofcontents
-	\newpage
-	%	\setcounter{page}{1}
-	\thispagestyle{plain}
-	Dieses Skript stellt keinen Ersatz für die Vorlesungsnotizen von Prof. Schindler dar und wird nicht nochmals von ihr durchgesehen, im Grunde sind das hier nur meine persönlichen Mitschriften. Beweise werde ich i.d.R. nicht übernehmen (weil das in \LaTeX{} einfach keinen Spaß macht).\\
-	Falls ihr Korrekturanmerkungen habt könnt ihr mir einfach bei Stud.IP schreiben oder direkt im \href{https://github.com/vonfalkenstein/Vorlesungsmitschrift-Zahlentheorie}{GitHub Repository} einen pull request machen. \hspace{\fill} glhf
-	\newpage
-	\mainmatter
-	\setstretch{1.15}			%Zeilenabstand. Kann man auch später nochmal reinhämmern, falls man es ändern will
+	\begingroup
+	\let\clearpage\relax
+	\listoffiles
+	\endgroup
+\newpage
+\thispagestyle{plain}
+Dieses Skript stellt keinen Ersatz für die Vorlesungsnotizen von Prof. Schindler dar und wird nicht nochmals von ihr durchgesehen. Im Grunde sind das hier nur meine persönlichen Mitschriften, ich garantiere also weder für Korrektheit noch Vollständigkeit und werde ggf. noch weitere Beispiele und Anmerkungen einfügen. Beweise werde ich in der Regel nicht übernehmen (weil das in \LaTeX{} einfach keinen Spaß macht).\\
+Falls ihr Korrekturanmerkungen habt könnt ihr mir gern bei Stud.IP schreiben oder direkt im \href{https://github.com/vonfalkenstein/Vorlesungsmitschrift-Zahlentheorie}{GitHub Repository} einen pull request machen (was vermutlich insgesamt weniger umständlich ist als der Weg über Stud.IP).\\\\
+glhf,\\
+Alex
+
+
+\mainmatter
+	
+	\include{./lectures/cpt01}
 	
 	
 	
 	
 	
-%	\include{./lectures/cpt01}
-\chapter{Testchapter}Test test test \newpage rein \newpage und nochmal
 	
-	
-	
-	
-	
-	
-	\appendix
-	\renewcommand{\appendixtocname}{Anhang}
-	\addappheadtotoc
+%	\appendix
+%	\renewcommand{\appendixtocname}{Anhang}
+%	\addappheadtotoc
 	\printindex
-	\printindex[lecture]
 \end{document}
