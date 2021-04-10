@@ -1,4 +1,9 @@
 \documentclass{jvfscript-de}
+%=======================================================================================================%
+%                                                                                                       %
+% Dieses Skript benötigt mein Package jvftex, erhältlich unter https://github.com/vonfalkenstein/jvftex %
+%                                                                                                       %
+%=======================================================================================================%
 \usepackage{ztstyle}
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
@@ -7,10 +12,18 @@
 
 \makeindex[title=Definitionen,intoc]
 \DeclareNewTOC[owner=jvfscript-de,listname=Dateiverzeichnis,type=files,types=files, name=Datei]{listoffiles}
-\renewcommand{\lecture}{%
+\newcounter{file}
+\newcommand{\file}[1]{%
+	\stepcounter{file}
+	\marginnote{Datei \thefile}
+	\addxcontentsline{listoffiles}{section}[\thefile]{Datei \thefile{} - {#1}}
+}
+\newcommand{\lecturefile}[1]{%
+	\stepcounter{file}
 	\stepcounter{lecture}
-	\marginnote{Datei \thelecture}
-	\addxcontentsline{listoffiles}{section}[\thelecture]{Datei \thelecture}
+	\marginnote{Vorlesung \thelecture\\Datei \thefile}
+	\addxcontentsline{listoflectures}{section}[\thelecture]{Vorlesung \thelecture}
+	\addxcontentsline{listoffiles}{section}[\thefile]{Datei \thefile{} - {#1}}
 }
 
 %\renewcommand{\thechapter}{\S \arabic{chapter}}
@@ -31,10 +44,12 @@
 	\tableofcontents
 	\begingroup
 	\let\clearpage\relax
+	\listoflectures
 	\listoffiles
 	\endgroup
 \newpage
 \thispagestyle{plain}
+
 Dieses Skript stellt keinen Ersatz für die Vorlesungsnotizen von Prof. Schindler dar und wird nicht nochmals von ihr durchgesehen. Im Grunde sind das hier nur meine persönlichen Mitschriften, ich garantiere also weder für Korrektheit noch Vollständigkeit und werde ggf. noch weitere Beispiele und Anmerkungen einfügen. Beweise werde ich in der Regel nicht übernehmen (weil das in \LaTeX{} einfach keinen Spaß macht).
 
 Falls Ihr Korrekturanmerkungen habt könnt Ihr mir gern bei \href{https://studip-ecampus.uni-goettingen.de/dispatch.php/profile?username=n.sennewald}{Stud.IP} schreiben oder direkt im \href{https://github.com/vonfalkenstein/Vorlesungsmitschrift-Zahlentheorie}{GitHub Repository} einen pull request machen (was vermutlich insgesamt weniger umständlich ist als der Weg über Stud.IP).\\\\

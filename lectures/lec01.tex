@@ -1,1 +1,51 @@
-\chapter{erstes Kapitel}\lecture
+\chapter[Primzahlen]{Primzahlen - Bausteine der ganzen Zahlen}\lecturefile{Primzahlen, Teilbarkeit}
+
+%\[ \begin{tikzcd}
+%	&&&G/\ker f \arrow{ddr}{\iota}&\\
+%	\\
+%	\ker f \arrow{rr}{\kappa}&& G \arrow{rr}{f} \arrow{uur}{\pi}& & H
+%\end{tikzcd} \]
+
+Wo liegen die Unterschiede zwischen $\Q$ und $\Z$?
+
+\begin{exmp*}
+	Seien $a,b \in \Z$, $a\neq 0$. Dann hat die Gleichung
+	\[ ax = b \]
+	nicht immer eine Lösung $x \in \Z$.
+\end{exmp*}
+
+\begin{defn*}[Teiler]\index{Teiler}
+	Seien $a,b \in \Z$. Wir sagen, dass \emph{$\emph{a}$ ein Teiler von $\emph{b}$ ist} ($a \mid b$), falls es eine ganze Zahl $x \in \Z$ gibt mit $ax = b$.
+\end{defn*}
+
+\begin{lem}\autolabel
+	Seien $a,b,c,d \in \Z$.
+	\begin{enumerate}[label={\roman*})]
+		\item Falls $d \mid a$ und $d \mid b$, dann $d \mid a+b$.
+		\item Ist $d \mid a$, dann auch $d \mid ab$.
+		\item Ist $d \mid a$, dann gilt $db \mid ab$.
+		\item Gilt $d \mid a$ und $a \mid b$, dann $d \mid b$.
+		\item Ist $a \neq 0$ und $d \mid a$, dann gilt $|d| \leq |a|$.
+	\end{enumerate}
+\end{lem}
+
+\begin{rem*}
+	Eine ganze Zahl $a \neq 0$ hat höchstens endlich viele Teiler.
+\end{rem*}
+
+\begin{thm}[Teilen mit Rest]\autolabel
+	Seien $a,b \in \Z, b > 0$. Dann gibt es $q,r \in \Z$ mit
+	\[ a = bq + r, \ 0 \leq r < b. \]
+\end{thm}
+
+\begin{defn*}[Primzahl]\index{Primzahl}
+	Eine ganze Zahl $p > 1$, die genau zwei positive Teiler hat (1 und sich selbst), nenn wir \emph{Primzahl}.
+\end{defn*}
+
+\begin{exmp*}
+	\( 2,3,5,7,11,13,17,19,23,29,31,\dotsc \)
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Sei $n \in \N, n > 1$ und sei $p>1$ der kleinste positive Teiler von $n$. Dann ist $p$ eine Primzahl. Ist außerdem $n$ nicht prim, dann gilt $p \leq \sqrt{n}$.
+\end{lem}
