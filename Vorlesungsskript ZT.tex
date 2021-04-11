@@ -13,17 +13,30 @@
 \makeindex[title=Definitionen,intoc]
 \DeclareNewTOC[owner=jvfscript-de,listname=Dateiverzeichnis,type=files,types=files, name=Datei]{listoffiles}
 \newcounter{file}
+\newcounter{video}
 \newcommand{\file}[1]{%
 	\stepcounter{file}
-	\marginnote{Datei \thefile}
-	\addxcontentsline{listoffiles}{section}[\thefile]{Datei \thefile{} - {#1}}
+	\marginnote{\normalfont Datei \thefile}
+	\addxcontentsline{listoffiles}{section}[]{Datei \thefile{} - {#1}}
 }
-\newcommand{\lecturefile}[1]{%
+\newcommand{\video}{%
+	\stepcounter{video}
+	\marginnote{\normalfont Video \thevideo}
+}
+\newcommand{\filevideo}[1]{%
+	\stepcounter{file}
+	\stepcounter{video}
+	\marginnote{\normalfont Datei \thefile,\\Video \thevideo}
+	\addxcontentsline{listoffiles}{section}[]{Datei \thefile{} - {#1}}
+}
+\newcommand{\lecturefilevideo}[2]{%
+	\setcounter{video}{0}
 	\stepcounter{file}
 	\stepcounter{lecture}
-	\marginnote{Vorlesung \thelecture\\Datei \thefile}
-	\addxcontentsline{listoflectures}{section}[\thelecture]{Vorlesung \thelecture}
-	\addxcontentsline{listoffiles}{section}[\thefile]{Datei \thefile{} - {#1}}
+	\stepcounter{video}
+	\marginnote{\normalfont Vorlesung \thelecture, #1, Datei \thefile: #2, Video \thevideo}
+	\addxcontentsline{listoflectures}{section}[]{Vorlesung \thelecture{} vom #1}
+	\addxcontentsline{listoffiles}{section}[]{Datei \thefile{} - {#2}}
 }
 
 %\renewcommand{\thechapter}{\S \arabic{chapter}}
@@ -41,9 +54,9 @@
 \begin{document}
 \frontmatter
 	\maketitle
-	\tableofcontents
 	\begingroup
 	\let\clearpage\relax
+	\tableofcontents
 	\listoflectures
 	\listoffiles
 	\endgroup

@@ -1,4 +1,4 @@
-\chapter[Primzahlen]{Primzahlen - Bausteine der ganzen Zahlen}\lecturefile{Primzahlen, Teilbarkeit}
+\chapter{Primzahlen - Bausteine der ganzen Zahlen}\lecturefilevideo{13.04.2021}{Primzahlen \& Teilbarkeit}
 
 %\[ \begin{tikzcd}
 %	&&&G/\ker f \arrow{ddr}{\iota}&\\
@@ -6,7 +6,7 @@
 %	\ker f \arrow{rr}{\kappa}&& G \arrow{rr}{f} \arrow{uur}{\pi}& & H
 %\end{tikzcd} \]
 
-Wo liegen die Unterschiede zwischen $\Q$ und $\Z$?
+Wo ergeben sich für uns in der Zahlentheorie Unterschiede, wenn wir über $\Z$ anstatt über $\Q$ arbeiten?
 
 \begin{exmp*}
 	Seien $a,b \in \Z$, $a\neq 0$. Dann hat die Gleichung
@@ -38,7 +38,7 @@ Wo liegen die Unterschiede zwischen $\Q$ und $\Z$?
 	\[ a = bq + r, \ 0 \leq r < b. \]
 \end{thm}
 
-\begin{defn*}[Primzahl]\index{Primzahl}
+\begin{defn*}[Primzahl]\index{Primzahl}\video
 	Eine ganze Zahl $p > 1$, die genau zwei positive Teiler hat (1 und sich selbst), nenn wir \emph{Primzahl}.
 \end{defn*}
 
@@ -49,3 +49,112 @@ Wo liegen die Unterschiede zwischen $\Q$ und $\Z$?
 \begin{lem}\autolabel
 	Sei $n \in \N, n > 1$ und sei $p>1$ der kleinste positive Teiler von $n$. Dann ist $p$ eine Primzahl. Ist außerdem $n$ nicht prim, dann gilt $p \leq \sqrt{n}$.
 \end{lem}
+
+\begin{rem*}
+	Diese Eigenschaft findet Anwendung im \emph{Sieb von Eratosthenes}. Dies ist ein einfacher Algorithmus, um schnell alle Primzahlen bis $n$ zu finden. Hierfür definieren wir zunächst die Menge \( A = \{z \in \Z \mid 2 \leq z \leq n\} \). Durch Lemma \ref{1.3} genügt es, zusätzlich lediglich die Menge $B = \{k \cdot p \mid k \in \Z, p \leq \sqrt{n} \ \text{prim}\}$, also alle Primzahlen $p \leq \sqrt{n}$ und deren Vielfache zu betrachten. Die Differenz $A \setminus B$ beinhaltet dann nur noch alle Primzahlen $\sqrt{n} \leq p \leq n$.
+\end{rem*}
+
+\begin{thm}[Euklid]\autolabel
+	Es gibt unendlich viele Primzahlen.
+\end{thm}
+
+\begin{thm}[Hauptsatz der Arithmetik, Primfaktorzerlegung]\autolabel
+	Jede natürliche Zahl $n > 1$ kann auf eindeutige Weise als Produkt
+	\[ n = p_1^{k_1} \cdot p_2^{k_2} \dotsm p_r^{k_r} \]
+	mit $k_1, \dotsc, k_r \in \N$ und $p_1 < p_2 < \dots < p_r$ Primzahlen geschrieben werden.
+\end{thm}
+
+\begin{lem}\video\autolabel
+	Seien \( a,b, p \in \N \) und $p$ eine Primzahl. Angenommen $p \mid ab$, dann gilt $p \mid a$ oder $p \mid b$.
+\end{lem}
+
+\begin{thm}\autolabel
+	Seien $a, b \in \N$ mit Primfaktorzerlegungen
+	\[ a = p_1^{a_1} \cdot p_2^{a_2} \dotsm p_r^{a_r},\quad b = p_1^{b_1} \cdot p_2^{b_2} \dotsm p_r^{b_r} \]
+	mit $p_1, \dotsc,r_p$ Primzahlen, $p_i \neq p_j$ für $i \neq j$ und $a_i,b_i \geq 0\ \foralll i$. Dann gilt genau dann \( b \mid a \), wenn \( b_i \leq a_i \ \foralll i \).
+\end{thm}
+
+\subsection*{Der größte gemeinsame Teiler}\video
+
+\begin{defn*}[größter gemeinsamer Teiler]\index{größter gemeinsamer Teiler}
+	Seien $a,b \in \N$. Der \emph{größte gemeinsame Teiler von $\emph{a}$ und $\emph{b}$} ist der größte Teiler $d$ mit $d \mid a$ und $d \mid b$. Wir schreiben $\ggt(a,b) = d$ (im englischen $\gcd(a,b)$).
+\end{defn*}
+
+\begin{rem*}
+Seien $a = p_1^{a_1} \cdot p_2^{a_2} \dotsm p_r^{a_r},\quad b = p_1^{b_1} \cdot p_2^{b_2} \dotsm p_r^{b_r}$ mit $p_1, \dotsc,r_p$ Primzahlen, $p_i \neq p_j$ für $i \neq j$ und $a_i,b_i \geq 0\ \foralll 1 \leq i \leq r$, und $d \in \N$ mit $ d = p_1^{d_1} \cdot p_2^{d_2} \dotsm p_r^{d_r}$, wobei $d_i \geq 0 \ \foralll 1 \leq i \leq r$. Angenommen $d \mid a$ und $d \mid b$, dann $d_i \leq a_i,b_i \ \foralll 1 \leq i \leq r$. Ist $d = \ggt(a,b)$, dann gilt $d_i = \min(a_i,b_i) \ \foralll 1 \leq i \leq r$ und 
+$$\ggt(a,b) = p_1^{\min(a_1,b_1)} \cdot p_2^{\mid(a_2,b_2)} \dotsm p_r^{\min(a_r,b_r)}.$$
+\end{rem*}
+
+\begin{lem}\autolabel
+	Seien $a,b,c,d \in \N$.
+	\begin{enumerate}[label={\roman*})]
+		\item Ist $d \mid a$ und $d \mid b$, dann $d \mid \ggt(a,b)$.
+		\item Angenommen $b \mid ac$ und $\ggt(a,b) = 1$. Dann gilt $b \mid c$.
+		\item Sei $a \mid c,\ b \mid c$ und $\ggt(a,b) = 1$. Dann $ab \mid c$.
+		\item Sei $d = \ggt(a,b)$. Dann gilt \( \ggt \left( \frac{a}{d},\frac{b}{d} \right) = 1. \)
+	\end{enumerate}
+\end{lem}
+
+\subsection*{Das kleinste gemeinsame Vielfache}
+
+\begin{defn*}[kleinstes gemeinsames Vielfaches]\index{kleinstes gemeinsames Vielfaches}
+	Seien $a,b \in \N$. Die kleinste natürliche Zahl $m$ mit $a \mid m$ und $b \mid m$ nennen wir das \emph{kleinste gemeinsame Vielfache von $\emph{a}$ und $\emph{b}$}. Wir schreiben $\kgv(a,b) = m$ (im englischen $\lcm(a,b)$).
+\end{defn*}
+
+\begin{rem*}
+	Seien $a,b$ mit den gleichen Primfaktorzerlegungen wie oben. Dann
+	\[ \kgv(a,b) = p_1^{\max(a_1,b_1)} \cdot p_2^{\max(a_2,b_2)} \dotsm p_r^{\max(a_r,b_r)}. \]
+	Bemerke: $\max(a_i,b_i) + \min(a_i,b_i) = a_i + b_i$. Also $ab = \ggt(a,b) \cdot \kgv(a,b)$.
+\end{rem*}
+
+\begin{defn*}
+	Seien \( a_1,\dotsc,a_k \in \Z \), nicht alle gleich null. Der größte gemeinsame Teiler von \( a_1,\dotsc,a_k \) ist die größte natürliche Zahl $d$, die jedes der $a_i$ teilt. Wir schreiben \( d = \ggt(a_1,\dotsc,a_k) \). Analog dazu können wir das kleinste gemeinsame Vielfache von $a_1,\dotsc, a_k$ als die kleinste positive ganze Zahl $m$ definieren, die durch jedes der $a_i$ teilbar ist, $m = \kgv(a_1,\dotsc,a_k)$.
+\end{defn*}
+
+\section*{Der Euklidische Algorithmus}\filevideo{Der Euklidische Algorithmus}
+
+\emph{Motivation:} Seien $a,b \in \N$. Wie können wir $\ggt(a,b)$ schnell berechnen?
+
+\begin{rem*}
+	Für $a,b \in \N$ schreibe $a = qb + r$ mit $0 \leq r < b$.
+	\begin{enumerate}[label={\roman*})]
+		\item Ist $d \in \N$ mit $d \mit a$ und $d \mid b$, dann gilt auch $d \mid r$.
+		\item Ist $d \mid b$ und $d \mid r$, dann $d \mid a$.
+	\end{enumerate}
+	Es folgt: $\ggt(a,b) = \ggt(b,r)$.
+\end{rem*}
+
+\begin{exmp*}
+	$a = 270,\ b = 192$
+	\begin{align*}
+		270 &= 1 \cdot 192 + 78\\
+		192 &= 2 \cdot 78 + 36\\
+		78 &= 2 \cdot 36 + 6\\
+		36 &= 6 \cdot 6 + 0\\
+		\noalign{\centering $\implies \ggt(270,192) = \dotsc = \ggt(6,0) = 6$}
+	\end{align*}
+\end{exmp*}
+
+Im Allgemeinen sieht das wie folgt aus:
+\begin{align*}
+	a &= q_0 b + r_1\\
+	b &= q_1 r_1 + r_2\\
+	r_1 &= q_2 r_2 + r_3\\
+	\noalign{\centering \dots}
+	r_{k-2} &= q_{k-1} r_{k-1} + r_k\\
+	r_{k-1} &= q_k r_k + 0\\
+	\implies \ggt(a,b) &= r_k
+\end{align*}
+Warum endet der Euklidische Algorithmus nach endlich vielen Schritten? In jedem Schritt gilt $0 \leq r_{j+1} < r_j \ \foralll j$. Da wir mit einer endlichen Zahl $b$ angefangen haben ist auch unser $r_1$ endlich, und da sich der Rest in jedem Schritt um mindestens 1 verkleinert sind wir nach maximal $|b|$ Schritten fertig.
+
+Der Euklidische Algorithmus ist schnell. Sei $a > b$, dann ist $r_1 < \frac{a}{2}$. Wenn wir dies fortsetzen erhalten wir 
+\begin{align*}
+	r_2 &< r_1 < \frac{a}{2}\\
+	r_3 &< \frac{r_1}{2} < \frac{a}{4}\\
+	r_4 &< \frac{r_2}{2} < \frac{a}{4}\\
+	\dots
+\end{align*}
+Nach Vollständiger Induktion folgt 
+\[ r_m < \frac{a}{2^{\frac{m}{2}}}\qquad \foralll m>0. \]
+Daher \( 1 \leq r_k < \frac{a}{2^{\frac{k}{2}}} \), also \( 2^\frac{k}{2} < a \) und somit
+\[ k < 2\frac{\log a}{\log 2} \]
