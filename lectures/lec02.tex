@@ -1,0 +1,15 @@
+\section*{Der erweiterte Euklidische Algorithmus}\lecturevideo{16.04.2021}
+
+\begin{alignat*}{3}
+	a &= q_0 b +r_1 &&\qquad r_1 &&= a - q_0 b\\
+	b &= q_1 r_1 + r_2 &&\qquad r_2 &&= b - q_1 r_1 = b - q_1(a-q_0b) = am_2 + bn_2\\
+	r_1 &= q_2 r_2 + r_3 &&\qquad r_3 &&= r_1 - q_2 r_2 = a m_3 + bn_3\\
+	\noalign{\centering \dots}
+	r_{k-2} &= q_{k-1}r_{k-1} + r_k &&\qquad r_k &&= am_k + bn_k\\
+	r_{k-1} = q_k r_k 
+\end{alignat*}
+
+\begin{thm}\autolabel
+	Seien $a,b \in \N$. Dann gibt es \( x,y \in \Z \) mit
+	\[ ax + by = \ggt(a,b). \]
+\end{thm}

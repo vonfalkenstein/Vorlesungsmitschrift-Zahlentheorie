@@ -16,7 +16,7 @@
 \newcounter{video}
 \newcommand{\file}[1]{%
 	\stepcounter{file}
-	\marginnote{\normalfont Datei \thefile}
+	\marginnote{\normalfont Datei \thefile: #1}
 	\addxcontentsline{listoffiles}{section}[]{Datei \thefile{} - {#1}}
 }
 \newcommand{\video}{%
@@ -26,17 +26,31 @@
 \newcommand{\filevideo}[1]{%
 	\stepcounter{file}
 	\stepcounter{video}
-	\marginnote{\normalfont Datei \thefile,\\Video \thevideo}
+	\marginnote{\normalfont Datei \thefile: #1,\\Video \thevideo}
 	\addxcontentsline{listoffiles}{section}[]{Datei \thefile{} - {#1}}
 }
-\newcommand{\lecturefilevideo}[2]{%
-	\setcounter{video}{0}
+\newcommand{\lecturefile}[2]{%
 	\stepcounter{file}
 	\stepcounter{lecture}
-	\stepcounter{video}
-	\marginnote{\normalfont Vorlesung \thelecture, #1, Datei \thefile: #2, Video \thevideo}
+	\marginnote{\normalfont Vorlesung \thelecture, #1, Datei \thefile: #2}
 	\addxcontentsline{listoflectures}{section}[]{Vorlesung \thelecture{} vom #1}
 	\addxcontentsline{listoffiles}{section}[]{Datei \thefile{} - {#2}}
+}
+\newcommand{\lecturevideo}[1]{%
+	\setcounter{video}{0}
+	\stepcounter{lecture}
+	\stepcounter{video}
+	\marginnote{\normalfont Vorlesung \thelecture, #1, Video \thevideo}
+	\addxcontentsline{listoflectures}{section}[]{Vorlesung \thelecture{} vom #1}
+}
+\newcommand{\lecturefilevideo}[2]{%
+\setcounter{video}{0}
+\stepcounter{file}
+\stepcounter{lecture}
+\stepcounter{video}
+\marginnote{\normalfont Vorlesung \thelecture, #1, Datei \thefile: #2, Video \thevideo}
+\addxcontentsline{listoflectures}{section}[]{Vorlesung \thelecture{} vom #1}
+\addxcontentsline{listoffiles}{section}[]{Datei \thefile{} - {#2}}
 }
 
 %\renewcommand{\thechapter}{\S \arabic{chapter}}
@@ -65,7 +79,7 @@
 
 Dieses Skript stellt keinen Ersatz für die Vorlesungsnotizen von Prof. Schindler dar und wird nicht nochmals von ihr durchgesehen. Im Grunde sind das hier nur meine persönlichen Mitschriften, ich garantiere also weder für Korrektheit noch Vollständigkeit und werde ggf. noch weitere Beispiele und Anmerkungen einfügen. Beweise werde ich in der Regel nicht übernehmen (weil das in \LaTeX{} einfach keinen Spaß macht).
 
-Falls Ihr Korrekturanmerkungen habt könnt Ihr mir gern bei \href{https://studip-ecampus.uni-goettingen.de/dispatch.php/profile?username=n.sennewald}{Stud.IP} schreiben oder direkt im \href{https://github.com/vonfalkenstein/Vorlesungsmitschrift-Zahlentheorie}{GitHub Repository} einen pull request machen (was vermutlich insgesamt weniger umständlich ist als der Weg über Stud.IP).\\\\
+Falls Ihr Korrekturanmerkungen habt könnt Ihr mir gern bei \href{https://studip-ecampus.uni-goettingen.de/dispatch.php/profile?username=n.sennewald}{Stud.IP} schreiben oder direkt im \href{https://github.com/vonfalkenstein/Vorlesungsmitschrift-Zahlentheorie}{GitHub Repository} einen pull request machen (was für mich deutlich weniger umständlich ist als der Weg über Stud.IP).\\\\
 glhf,\\
 Alex
 
