@@ -1,12 +1,18 @@
 \section*{Der erweiterte Euklidische Algorithmus}\lecturevideo{16.04.2021}
 
+Der Euklidische Algorithmus kann noch mehr als lediglich den größten gemeinsamen Teiler zu berechnen. Sein $a,b \in \N$.
+
 \begin{alignat*}{3}
 	a &= q_0 b +r_1 &&\qquad r_1 &&= a - q_0 b\\
-	b &= q_1 r_1 + r_2 &&\qquad r_2 &&= b - q_1 r_1 = b - q_1(a-q_0b) = am_2 + bn_2\\
-	r_1 &= q_2 r_2 + r_3 &&\qquad r_3 &&= r_1 - q_2 r_2 = a m_3 + bn_3\\
+	0 &\leq r_1 < b\\
+	b &= q_1 r_1 + r_2 &&\qquad r_2 &&= b - q_1 r_1 = b - q_1(a-q_0b)\\
+	0 &\leq r_2 < r_1 &&\qquad &&= am_2 + bn_2,\ m_2,n_2 \in \Z\\
+	r_1 &= q_2 r_2 + r_3 &&\qquad r_3 &&= r_1 - q_2 r_2\\
+	0 &\leq r_3 < r_2 &&\qquad &&= am_2 + bn_3,\ m_3,n_3 \in \Z\\
 	\noalign{\centering \dots}
 	r_{k-2} &= q_{k-1}r_{k-1} + r_k &&\qquad r_k &&= am_k + bn_k\\
-	r_{k-1} = q_k r_k 
+	0 &\leq r_k < r_{k-1} &&\qquad &&m_k,n_k \in \Z\\
+	r_{k-1} &= q_k r_k + 0
 \end{alignat*}
 
 \begin{thm}\autolabel

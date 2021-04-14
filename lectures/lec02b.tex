@@ -1,0 +1,75 @@
+\chapter{Die Teilerfunktion} \filevideo{Teilerfunktion, Kongruenzen}
+
+\begin{defn*}[Teilerfunktion]\index{Teilerfunktion}
+	Sei $n \in \N$. Wir definieren \( d(n) \) als die Zahl der positiven Teiler von $n$, d.h.
+	\[ d(n) = \sum_{\substack{d \mid n \\ d \geq 1}} 1. \]
+	Weiter definieren wir
+	\[ S(n) = \sum_{\substack{d \mid n \\ d \geq 1 \\ d < n}} d \]
+	und 
+	\[ \sigma(n) = \sum_{\substack{d \mid n \\ d \geq 1}} d \]
+\end{defn*}
+
+\begin{exmp*}
+	\( d(7) = 2,\ d(6) = 4 \)\\
+	Sei $p$ eine Primzahl, dann gilt $d(p) = 2$ und $d(p^k) = k+1$ für $k\geq 0$.
+\end{exmp*}
+
+\begin{rem*}
+	$\sigma(n) = S(n) + n$
+\end{rem*}
+
+\begin{defn*}[perfekte Zahl] \index{perfekte Zahl}
+	Wir nennen eine natürliche Zahl $n$ \emph{perfekt}, falls
+	\[ S(n) = n. \]
+\end{defn*}
+
+\begin{exmp*}
+	$6 = 1+2+3$ ist perfekt. 28 ist perfekt.
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Seien $m,n \in \N$ mit $\ggt(m,n) = 1$. Dann gilt
+	\[ d(mn) = d(m)d(n) \]
+	und \[ \sigma(mn) = \sigma(m) \sigma(n). \]
+\end{lem}
+
+\begin{rem*}
+	$d(n)$ und $\sigma(n)$ sind sogenannte \textit{multiplikative Funktionen}.
+\end{rem*}
+
+Kennt man die Primfaktorzerlegung von $n$, so lassen sich diese Funktionen sehr einfach berechnen. Wir wollen nun eine allgemeine Formel für $d(n)$ aufstellen.
+
+Sei $n = p_1^{k_1} \dotsm p_r^{k_r}$ mit $p_1 < \dots < p_3$ Primzahlen, $k_1, \dotsm, k_r \geq 0$. Dann gilt nach Lemma \ref{2.1}
+\begin{align*}
+	d(n) &= d \left( p_1^{k_1} \dotsm p_r^{k_r} \right)\\
+	&= d\left(p_1^{k_1}\right) \dotsm d\left(p_r^{k_r}\right)
+\end{align*}
+Es gilt
+\[ d(p^k) = k + 1, \]
+also
+\[ d(n) = (k_1+1) (k_2+1) \dotsm (k_r+1). \]
+Weiterhin berechnen wir
+\begin{align*}
+	\sigma(n) &= \sigma\left(p_1^{k_1}\right) \dotsm \sigma\left(p_r^{k_r}\right)\\
+	\sigma\left(p^k\right) &= 1 +p + p^2 + \dots + p^k\\
+	&= \frac{p^{k+1} -1}{p-1}
+\end{align*}
+Wir erhalten
+\[ \sigma(n) = \frac{p_1^{k_1+1} - 1}{p_1-1} \dotsm \frac{p_r^{k_r+1}-1}{p_r-1} \]
+
+\begin{thm}\autolabel
+	Sei $n = p_1^{k_1} \dotsm p_r^{k_r}$ mit $p_1 < \dots < p_3$ Primzahlen, $k_1, \dotsm, k_r \geq 0$. Dann gilt 
+	\begin{align*}
+		d(n) &= \prod_{i=1}^r (k_i+1)\\
+		\sigma(n) &= \prod_{i=1}^r \frac{p_i^{k_i + 1}-1}{p_i-1}.
+	\end{align*}
+\end{thm}
+
+\begin{exmp*}
+	\( d(25 \cdot 3) = d(25) d(3) = d(5^2) d(3) = 3 \cdot 2 = 6 \)
+\end{exmp*}
+
+\begin{rem*}
+	$S(n)$ ist keine multiplikative Funktion:\\
+	\( 1 = S(2)S(3) \neq S(6) = 6 \)
+\end{rem*}
