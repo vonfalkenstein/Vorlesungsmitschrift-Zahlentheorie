@@ -7,20 +7,20 @@
 \end{exmp*}
 
 \begin{defn*}[Kongruenz, Kongruenzklasse]\index{Kongruenzklasse}
-	Sei $M \in \N,\ M > 1,\ a,b \in \Z$. Wir sagen, dass \emph{$\emph{a}$ kongruent zu $\emph{b}$ ist modulo $\emph{M}$}, falls \( M \mid (a-b) \), schreibe \( a \equiv b \mod M \).\\
-	Sei $r \in \Z$. Die Menge aller ganzen Zahlen $x$ mit $x \equiv r \mod M$ nennen wir die \emph{Kongruenzklasse von $\emph{r}$ modulo $\emph{M}$}.
+	Sei $M \in \N,\ M > 1,\ a,b \in \Z$. Wir sagen, dass \emph{$\emph{a}$ kongruent zu $\emph{b}$ ist modulo $\emph{M}$}, falls \( M \mid (a-b) \), schreibe \( a \equiv b \bmod M \).\\
+	Sei $r \in \Z$. Die Menge aller ganzen Zahlen $x$ mit $x \equiv r \bmod M$ nennen wir die \emph{Kongruenzklasse von $\emph{r}$ modulo $\emph{M}$}.
 \end{defn*}
 
 \begin{exmp*}
-	\( 7 \equiv  27 \mod 10,\ 4 \equiv 1 \mod 3 \)
+	\( 7 \equiv  27 \bmod 10,\ 4 \equiv 1 \bmod 3 \)
 \end{exmp*}
 
 \begin{lem}\autolabel
-	Sei $M > 1,\ M \in \N,\ a_1,a_2,b_1,b_2 \in \Z$ mit $a_1 \equiv a_2 \mod M$ und $b_1 \equiv b_2 \mod M$. Dann gilt
+	Sei $M > 1,\ M \in \N,\ a_1,a_2,b_1,b_2 \in \Z$ mit $a_1 \equiv a_2 \bmod M$ und $b_1 \equiv b_2 \bmod M$. Dann gilt
 	\begin{enumerate}[label={\roman*})]
-		\item $a_1 + b_1 \equiv a_2 + b_2 \mod M$
-		\item $a_1 - b_1 \equiv a_2 - b_2 \mod M$
-		\item $a_1b_1 \equiv a_2b_2 \mod M$
+		\item $a_1 + b_1 \equiv a_2 + b_2 \bmod M$
+		\item $a_1 - b_1 \equiv a_2 - b_2 \bmod M$
+		\item $a_1b_1 \equiv a_2b_2 \bmod M$
 	\end{enumerate}
 \end{lem}
 
@@ -41,19 +41,19 @@ Seien \( x,y \in \Z \) mit $2x = 2y $. Die echten Detektive unter uns erkennen, 
 \begin{exmp*}
 	\begin{enumerate}
 		\item[]
-		\item \( 2x \equiv 2y \mod 4 \overset{?}{\implies} x \equiv y \mod 4 \)\\
-			\textcolor{red}{Nein $\lightning$}, z.B. \( 2 \cdot 3 \equiv 2 \cdot 1 \mod 4,\ 3 \not\equiv 1 \mod 4 \)
-		\item \( 2x \equiv 2y \mod 5 \implies 5 \mid (2x-y) \), d.h. \( 5 \mid x-y \implies x \equiv y \mod 5 \)\\
-			\underline{oder} bemerke, dass \( 2 \cdot 3 \equiv 1 \mod 5 \) und multipliziere die obige Kongruenz mit 3.
+		\item \( 2x \equiv 2y \bmod 4 \overset{?}{\implies} x \equiv y \bmod 4 \)\\
+			\textcolor{red}{Nein $\lightning$}, z.B. \( 2 \cdot 3 \equiv 2 \cdot 1 \bmod 4,\ 3 \not\equiv 1 \bmod 4 \)
+		\item \( 2x \equiv 2y \bmod 5 \implies 5 \mid (2x-y) \), d.h. \( 5 \mid x-y \implies x \equiv y \bmod 5 \)\\
+			\underline{oder} bemerke, dass \( 2 \cdot 3 \equiv 1 \bmod 5 \) und multipliziere die obige Kongruenz mit 3.
 	\end{enumerate}
 \end{exmp*}
 
 \begin{defn*}[Invertierbare Restklasse]\index{Kongruenzklasse!Invertierbare Restklasse}
-	Sei \( M \in \N,\ M > 1 \). Wir nennen \( a \in \Z \) \emph{invertierbar modulo $\emph{M}$}, falls es \( \existss b \in \Z \) gibt mit \( ab \equiv 1 \mod M \). In dem Fall nennen wir die Restklasse \( a\) (modulo $M$) invertierbar.
+	Sei \( M \in \N,\ M > 1 \). Wir nennen \( a \in \Z \) \emph{invertierbar modulo $\emph{M}$}, falls es \( \existss b \in \Z \) gibt mit \( ab \equiv 1 \bmod M \). In dem Fall nennen wir die Restklasse \( a\) (modulo $M$) invertierbar.
 \end{defn*}
 
 \begin{exmp*}
-	2 ist invertierbar modulo 25, denn \( 2 \cdot 13 \equiv 1 \mod 25 \).
+	2 ist invertierbar modulo 25, denn \( 2 \cdot 13 \equiv 1 \bmod 25 \).
 \end{exmp*}
 
 \begin{thm}\autolabel
@@ -61,7 +61,7 @@ Seien \( x,y \in \Z \) mit $2x = 2y $. Die echten Detektive unter uns erkennen, 
 \end{thm}
 
 \begin{rem*}
-	Ist \( a \in \Z \) invertierbar modulo $M$, dann ist jedes Element in der Restklasse $a \mod M$ invertierbar modulo $M$.\video Die Menge aller $b \in \Z$ mit $ba \equiv 1 \mod M$ ist eine Restklasse modulo $M$, schreibe $a^{-1}$ (modulo $M$) für diese Restklasse.
+	Ist \( a \in \Z \) invertierbar modulo $M$, dann ist jedes Element in der Restklasse $a \bmod M$ invertierbar modulo $M$.\video Die Menge aller $b \in \Z$ mit $ba \equiv 1 \bmod M$ ist eine Restklasse modulo $M$, schreibe $a^{-1}$ (modulo $M$) für diese Restklasse.
 \end{rem*}
 
 Sei \( a \in \Z,\ M \in \N,\ M > 1 \) mit \( \ggt(a,M) = 1 \). Wie können wir die inverse Restklasse $a^{-1}$ berechnen?\\
@@ -81,5 +81,5 @@ $\implies$ wir verwenden den erweiterten Euklidischen Algorithmus um \( x,y \in 
 \end{exmp*}
 
 \begin{lem}\autolabel
-	Sei $p$ prim. Dann gilt \( (p-1)! \equiv -1 \mod p. \)
+	Sei $p$ prim. Dann gilt \( (p-1)! \equiv -1 \bmod p. \)
 \end{lem}

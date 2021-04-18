@@ -1,0 +1,73 @@
+\section*{Lineare Kongruenzgleichungen}\lecturefilevideo{20.04.2021}{Lineare Kongruenzgleichungen}
+
+\begin{frage*}
+	Seien $a,b \in \Z,\ M \in \N$. Finde alle ganzzahligen Lösungen $x \in \Z$, sodass gilt
+	\[ ax \equiv b \mod M. \]
+\end{frage*}
+
+\begin{exmp*}
+	\begin{enumerate}[label={\roman*})]
+		\item \( 5x \equiv 7 \bmod 15 \) hat \textit{keine} Lösung
+		\item \( 5x \equiv 25 \bmod 15 \), d.h. \( 15 \mid (5x - 25) = 5(x-5) \iff 3 \mid x-5 \) oder \( x \equiv 5 \bmod 3 \), d.h. \( x \equiv 2 \bmod 3 \). Die Lösungen der Kongruenz \( 5x \equiv 25 \bmod 15 \) sind gegeben durch alle $x \in \Z$ der Form $x = 2+3k$ mit $k \in \Z$.
+	\end{enumerate}
+\end{exmp*}
+
+\begin{thm}\autolabel
+	Seien $a,b \in \Z,\ M \in \Z_{\geq 2}$ und $d = \ggt(a,M)$. Die Gleichung
+	\[ ax \equiv b \mod M \]
+	hat genau dann eine Lösung $x \in \Z$, wenn $d \mid b$.\\
+	Wenn dies gilt, dann ist die Gleichung $ax \equiv b \bmod M$ äquivalent zu 
+	\[ \frac{a}{d} x \equiv \frac{b}{d} \mod \frac{M}{d}. \]
+	Diese Gleichung hat eine Lösung, denn
+	\[ \ggt \left( \frac{a}{d}, \frac{M}{d} \right) = 1. \]
+\end{thm}
+
+\section*{Der Chinesische Restsatz}\filevideo{Der Chinesische Restsatz}
+
+Wir wollen alle $x \in \Z$ finden, die nach Teilen mit Rest durch 2,3,5 die Reste 1,2,3 lassen. Anders formuliert: Finde $x \in \Z$ mit
+\begin{align*}
+	x &\equiv 1 \mod 2\\
+	x &\equiv 2 \mod 3\\
+	x &\equiv 3 \mod 5
+\end{align*}
+Ist $x \in \Z$ eine Lösung der obigen Kongruenzen, dann auch $x + 30k$ für jedes $k \in \Z$.\\
+Sei nun $x$ eine solche Lösung. Dann gilt $x \equiv 3 \bmod 5$, schreibe $x = 3+5u$ mit $u \in \Z$. Es muss außerdem gelten
+\[ 3 + 5u \equiv 2 \mod 3, \]
+d.h. $2u \equiv 2 \bmod 3 \iff u \equiv 1 \bmod 3,$ also $u = 1+3v$ mit $v \in \Z$, schreibe also
+\begin{align*}
+	x &= 3+5(1+3v)\\
+	&= 8+15v.
+\end{align*}
+Zuletzt betrachten wir nun 
+\[ 8+15v \equiv 1 \mod 2. \]
+Daraus folgt, dass $v$ ungerade ist, d.h. $v = 1+2w$ mit $w \in \Z$. Wir erhalten
+\begin{align*}
+	x &= 8+15(1+2w)\\
+	&= 23+30w,\quad w \in \Z.
+\end{align*}
+
+\subsection*{Im Allgemeinen:}
+
+Seien $c_1,\dotsc,c_n \in \Z,\ m_1,\dotsc,m_n \in \Z_{\geq 2}$. Finde alle $x \in \Z$ mit
+\begin{equation}\label{ChinRem}
+	\begin{split}
+		x &\equiv c_1 \mod m_1\\
+		x &\equiv c_2 \mod m_2\\
+%		\noalign{\centering $\vdots$}
+		x &\equiv c_n \mod m_n
+	\end{split}
+\end{equation}
+\emph{Achtung:} Es ist zu beachten, dass es manchmal keine Lösung gibt, z.B. bei 
+\begin{align*}
+	x &\equiv 1 \mod 3\\
+	x &\equiv 2 \mod 9.
+\end{align*}
+Dies rührt daher, dass wir bisher keine Annahmen über die Module getroffen haben, was wir später noch für den chinesischen Restsatz tun werden. Zunächst fassen wir unsere Vorüberlegungen, dass sich unsere Lösungsmenge durchs kleinste gemeinsame Vielfache der Module ergibt, in folgendem Lemma zusammen:
+
+\begin{lem}\autolabel
+	Sei $x_0 \in \Z$ eine Lösung zum System \ref{ChinRem}. Dann besteht die gesamte Lösungsmenge des Systems aus der Restklasse $x_0 \bmod M$ mit $M = \kgv(m_1,\dotsc,m_n)$.
+\end{lem}
+
+\begin{thm}[Chinesischer Restsatz]\autolabel\video
+	Wir benutzen die gleiche Notation wie im System \ref{ChinRem}. Angenommen, $\ggt(m_i,m_j)=1$ für $i \neq j$, dann hat das System \ref{ChinRem} genau eine Restklasse modulo $m_1 \dotsm m_n$ als Lösung.
+\end{thm}
