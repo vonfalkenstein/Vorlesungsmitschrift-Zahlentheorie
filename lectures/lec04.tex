@@ -1,0 +1,108 @@
+\lecturefilevideo{23.04.2021}{Kleiner Satz von Fermat}
+\begin{thm}[Fermats kleiner Satz]\autolabel
+	Sei $a \in \Z,\ p $ eine Primzahl. Dann gilt
+	\[ a^p \equiv a \mod p. \]
+	Ist $p \nmid a$, dann gilt
+	\[ a^{p-1} \equiv 1 \mod p. \]
+\end{thm}
+
+\begin{thm}[Euler]\autolabel
+	Sei $M \geq 2,\ a \in \Z$ mit $\ggt(a,M) = 1$. Dann gilt
+	\[ a^{\phi(M)} \equiv 1 \mod M. \]
+\end{thm}
+
+\begin{rem*}
+	$(\Z/M\Z)^*$ ist eine Gruppe der Ordnung $\phi(M)$. Ist $a \in (\Z/M\Z)^*$, dann gilt $a^{\phi(M)} ) 1$ in $(\Z/M\Z)^*$.
+\end{rem*}
+
+\section*{Ordnungen}\filevideo{Ordnungen}
+
+Sei $M \in \Z_{\geq 2},\ a \in \Z$ mit $\ggt(a,M)=1$. Wir wissen bereits 
+\[ a^{\phi(M)} \equiv 1 \mod M. \]
+Sei $E = \{k \in \N \mid a^k \equiv 1 \bmod M\}$. Dann ist $E \neq \emptyset$.
+
+\begin{defn*}[Ordnung]\index{Ordnung}
+	Das kleinste Element in $E$ nennen wir die \emph{Ordnung von $\emph{a}$ modulo $\emph{M}$}.
+	\begin{notat*}
+		$\ord_M(a)$
+	\end{notat*}
+\end{defn*}
+
+\begin{exmp*}
+	Seien $M = 5,\ a= 2$. Für welche $k \in \N$ gilt $2^k \equiv 1 \bmod 5$?
+	\[ 2^1 \equiv 2,\ 2^2 \equiv 4,\ 2^3 \equiv 3,\ 2^4 \equiv 4 \mod 5 \]
+	Also gilt $\ord_5 2 = 4$.
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Sei $M \in \Z_{\geq 2},\ a \in \Z$ mit $\ggt(M,a)=1$. Angenommen $a^k \equiv 1 \bmod M$. Dann gilt
+	\[ \ord_M a \mid k. \]
+\end{lem}
+
+\video Wir betrachten zunächst eine Verschärfung des Satzes von Euler (\ref{4.5}):\\
+Sei $M \in \Z_{\geq 2}$ von der Form
+\[ M = p_1^{k_1} \dotsm p_r^{k_4} \]
+mit $p_1 < \dots < p_r$ prim und $k_1, \dotsc, k_r \geq 1$. Setze
+\[ \lambda(M) = \kgv_{1 \leq i \leq r} \left( p_1^{k_i} - p_i^{k_i - 1} \right) = \kgv_{1 \leq i \leq r} \phi\left(p_i^{k_i}\right) \]
+Vergleiche mit
+\[ \phi(M) = \prod_{i=1}^r \left( p_1^{k_i} - p_i^{k_i - 1} \right) \]
+Unser Ziel ist nun, zu zeigen, dass wir im Satz von Euler $\phi(M)$ einfach durch $\lambda(M)$ ersetzen können, was kleiner als $\phi(M)$ sein kann.
+
+\begin{thm}\autolabel
+	Sei $M \in \Z_{\geq 2}$ wie oben, d.h.
+	\[ M = p_1^{k_1} \dotsm p_r^{k_4} \]
+	mit $p_1 < \dots < p_r$ prim und $k_1, \dotsc, k_r \geq 1$. Sei $a \in \Z$ mit $\ggt(a,M)=1$. Dann gilt
+	\[ a^{\lambda(M)} \equiv 1 \mod M. \]
+\end{thm}
+
+\begin{defn*}[Primitivwurzel]\index{Primitivwurzel}
+	Sei $M \geq 2$. Eine ganze Zahl $g \in \Z$ mit $\ggt(M,g)=1$ und 
+	\[ \left\{ \bar{g}, \bar{g}^2,\dotsc, \bar{g}^{\phi(M)} \right\} = (\Z/M\Z)^* \]
+	nennen wir \emph{Primitivwurzel modulo $\emph{M}$}.
+\end{defn*}
+
+\begin{exmp*}
+	\begin{enumerate}
+		\item 2 ist eine Primitivwurzel modulo 5, denn
+		\[ \left\{2,2^2,2^3,2^4 \right\} = (\Z/M\Z)^*. \]
+		\item Gibt es eine Primitivwurzel modulo $M=15$? In anderen Worten, gibt es $g \in \Z$, $\ggt(g,15)=1$, mit $\left\{ g,g^2,\dotsc,g^{\phi(15)} \right\} = (\Z/15\Z)^*$?\\
+			Bemerke $\phi(15) = \phi(5)\phi(3) = 4 \cdot 2 = 8$, aber $\lambda(15) = \kgv(\phi(15),\phi(3)) = 4$.\\
+			Also für $\ggt(g,15) = 1$ $\left|\left\{ g,g^2,\dotsc, g^{\phi(15)} \right\}\right| \leq 4$, denn $g^{\lambda(15)} = g^4 \equiv 1 \bmod 15$. Also gibt es keine Primitivwurzel modulo 15.
+		\item Sei $M = pq$ mit $pq,$ prim, $p,q > 2$. Dann ist $\phi(M) = (p-1)(q-1)$, aber $\lambda(M) = \kgv(p-1,q-1) < \phi(M)$. Also gibt es keine Primitivwurzel modulo $M$.
+	\end{enumerate}
+\end{exmp*}
+
+Im Weiteren wollen wir nun zeigen, dass es im Allgemeinen zu jeder Primzahl auch eine Primitivwurzel gibt. Dafür benötigen wir zunächst folgende Lemmata:
+
+\begin{lem}\filevideo{Primitivwurzeln}\autolabel
+	Seien $a,b \in (\Z/M\Z)^*$ mit $M \in \Z_{\geq 2}$, $A = \ord_M a, B = \ord_M b$. Angenommen $\ggt(A,B)=1$, dann gilt
+	\[ \ord_M ab = AB. \]
+\end{lem}
+
+\begin{lem}\autolabel
+	Seien $a_1,\dotsc,a_m \in (\Z/M\Z)^*$ mit $M \in \Z_{\geq 2}$ und $A = \kgv(\ord_M(a_1),\dotsc, \ord_M(a_m))$. Dann $\existss b \in (\Z/M\Z)^*$ mit $\ord_M b = A$.
+\end{lem}
+
+\section*{Primitivwurzeln}\video
+
+\begin{thm}\autolabel
+	Sei $p$ eine Primzahl. Dann gibt es eine Primitivwurzel modulo $p$.
+\end{thm}
+
+Das bedeutet, dass es $g \in \Z$ (oder $g \in \N$) gibt mit $\left\{ g,g^2,\dotsc,g^{p-1} \right\} = (\Z/p\Z)^*$. Wie klein kann man dieses $g$ nun wählen?
+
+\begin{conj*}
+	Sei $p$ eine Primzahl. Dann gibt es eine Primitivwurzel $g \in \N$ mit $g < 2 (\log p)^2$.
+\end{conj*}
+
+Von einem Beweis dieser Vermutung sind wir noch sehr weit enfernt. Doch was ist bisher bekannt? Es gib eine Primitivwurzel $g \in \N$ modulo $p$ mit $g < Cp^{\frac{1}{4} + \epsilon}$, wobei $C,\epsilon>0$ und $\epsilon$ beliebig klein. Dieses Resultat folgt aus Arbeiten von D.A. Burgess aus dem Jahre 1962.
+
+\begin{conj*}[Artin]
+	2 ist eine Primitivwurzel für unendlich viele Primzahlen $p$.
+\end{conj*}
+
+Eine leicht abgeänderte und "aufgefächerte" Variante dieser Vermutung stellt der folgende Satz dar, der sich auch tatsächlich beweisen ließ:
+
+\begin{thm*}[Heath-Brown, 1986]
+	Mindestens eine der Zahlen 2,3,5 ist eine Primitivwurzel für unendlich viele Primzahlen $p$.
+\end{thm*}
