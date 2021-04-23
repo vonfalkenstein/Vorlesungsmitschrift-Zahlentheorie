@@ -8,17 +8,17 @@
 
 \begin{thm}[Euler]\autolabel
 	Sei $M \geq 2,\ a \in \Z$ mit $\ggt(a,M) = 1$. Dann gilt
-	\[ a^{\phi(M)} \equiv 1 \mod M. \]
+	\[ a^{\varphi(M)} \equiv 1 \mod M. \]
 \end{thm}
 
 \begin{rem*}
-	$(\Z/M\Z)^*$ ist eine Gruppe der Ordnung $\phi(M)$. Ist $a \in (\Z/M\Z)^*$, dann gilt $a^{\phi(M)} ) 1$ in $(\Z/M\Z)^*$.
+	$(\Z/M\Z)^*$ ist eine Gruppe der Ordnung $\varphi(M)$. Ist $a \in (\Z/M\Z)^*$, dann gilt $a^{\varphi(M)} ) 1$ in $(\Z/M\Z)^*$.
 \end{rem*}
 
 \section{Ordnungen}\filevideo{Ordnungen}
 
 Sei $M \in \Z_{\geq 2},\ a \in \Z$ mit $\ggt(a,M)=1$. Wir wissen bereits 
-\[ a^{\phi(M)} \equiv 1 \mod M. \]
+\[ a^{\varphi(M)} \equiv 1 \mod M. \]
 Sei $E = \{k \in \N \mid a^k \equiv 1 \bmod M\}$. Dann ist $E \neq \emptyset$.
 
 \begin{defn*}[Ordnung]\index{Ordnung}
@@ -43,10 +43,10 @@ Sei $E = \{k \in \N \mid a^k \equiv 1 \bmod M\}$. Dann ist $E \neq \emptyset$.
 Sei $M \in \Z_{\geq 2}$ von der Form
 \[ M = p_1^{k_1} \dotsm p_r^{k_r} \]
 mit $p_1 < \dots < p_r$ prim und $k_1, \dotsc, k_r \geq 1$. Setze
-\[ \lambda(M) = \kgv_{1 \leq i \leq r} \left( p_1^{k_i} - p_i^{k_i - 1} \right) = \kgv_{1 \leq i \leq r} \phi\left(p_i^{k_i}\right) \]
+\[ \lambda(M) = \kgv_{1 \leq i \leq r} \left( p_1^{k_i} - p_i^{k_i - 1} \right) = \kgv_{1 \leq i \leq r} \varphi\left(p_i^{k_i}\right) \]
 Vergleiche mit
-\[ \phi(M) = \prod_{i=1}^r \left( p_1^{k_i} - p_i^{k_i - 1} \right) \]
-Unser Ziel ist nun, zu zeigen, dass wir im Satz von Euler $\phi(M)$ einfach durch $\lambda(M)$ ersetzen können, was kleiner als $\phi(M)$ sein kann.
+\[ \varphi(M) = \prod_{i=1}^r \left( p_1^{k_i} - p_i^{k_i - 1} \right) \]
+Unser Ziel ist nun, zu zeigen, dass wir im Satz von Euler $\varphi(M)$ einfach durch $\lambda(M)$ ersetzen können, was kleiner als $\varphi(M)$ sein kann.
 
 \begin{thm}\autolabel
 	Sei $M \in \Z_{\geq 2}$ wie oben, d.h.
@@ -57,7 +57,7 @@ Unser Ziel ist nun, zu zeigen, dass wir im Satz von Euler $\phi(M)$ einfach durc
 
 \begin{defn*}[Primitivwurzel]\index{Primitivwurzel}
 	Sei $M \geq 2$. Eine ganze Zahl $g \in \Z$ mit $\ggt(M,g)=1$ und 
-	\[ \left\{ \bar{g}, \bar{g}^2,\dotsc, \bar{g}^{\phi(M)} \right\} = (\Z/M\Z)^* \]
+	\[ \left\{ \bar{g}, \bar{g}^2,\dotsc, \bar{g}^{\varphi(M)} \right\} = (\Z/M\Z)^* \]
 	nennen wir \emph{Primitivwurzel modulo $\emph{M}$}.
 \end{defn*}
 
@@ -65,10 +65,10 @@ Unser Ziel ist nun, zu zeigen, dass wir im Satz von Euler $\phi(M)$ einfach durc
 	\begin{enumerate}
 		\item 2 ist eine Primitivwurzel modulo 5, denn
 		\[ \left\{2,2^2,2^3,2^4 \right\} = (\Z/M\Z)^*. \]
-		\item Gibt es eine Primitivwurzel modulo $M=15$? In anderen Worten, gibt es $g \in \Z$, $\ggt(g,15)=1$, mit $\left\{ g,g^2,\dotsc,g^{\phi(15)} \right\} = (\Z/15\Z)^*$?\\
-			Bemerke $\phi(15) = \phi(5)\phi(3) = 4 \cdot 2 = 8$, aber $\lambda(15) = \kgv(\phi(15),\phi(3)) = 4$.\\
-			Also für $\ggt(g,15) = 1$ $\left|\left\{ g,g^2,\dotsc, g^{\phi(15)} \right\}\right| \leq 4$, denn $g^{\lambda(15)} = g^4 \equiv 1 \bmod 15$. Also gibt es keine Primitivwurzel modulo 15.
-		\item Sei $M = pq$ mit $pq,$ prim, $p,q > 2$. Dann ist $\phi(M) = (p-1)(q-1)$, aber $\lambda(M) = \kgv(p-1,q-1) < \phi(M)$. Also gibt es keine Primitivwurzel modulo $M$.
+		\item Gibt es eine Primitivwurzel modulo $M=15$? In anderen Worten, gibt es $g \in \Z$, $\ggt(g,15)=1$, mit $\left\{ g,g^2,\dotsc,g^{\varphi(15)} \right\} = (\Z/15\Z)^*$?\\
+			Bemerke $\varphi(15) = \varphi(5)\varphi(3) = 4 \cdot 2 = 8$, aber $\lambda(15) = \kgv(\varphi(5),\varphi(3)) = 4$.\\
+			Also für $\ggt(g,15) = 1$ $\left|\left\{ g,g^2,\dotsc, g^{\varphi(15)} \right\}\right| \leq 4$, denn $g^{\lambda(15)} = g^4 \equiv 1 \bmod 15$. Also gibt es keine Primitivwurzel modulo 15.
+		\item Sei $M = pq$ mit $pq,$ prim, $p,q > 2$. Dann ist $\varphi(M) = (p-1)(q-1)$, aber $\lambda(M) = \kgv(p-1,q-1) < \varphi(M)$. Also gibt es keine Primitivwurzel modulo $M$.
 	\end{enumerate}
 \end{exmp*}
 
