@@ -51,10 +51,11 @@ Wo ergeben sich für uns in der Zahlentheorie Unterschiede, wenn wir über $\Z$ 
 \end{lem}
 
 \begin{rem*}
-	Diese Eigenschaft findet Anwendung im \emph{Sieb von Eratosthenes}. Dies ist ein einfacher Algorithmus, um schnell alle Primzahlen bis $n$ zu finden. Hierfür definieren wir zunächst die Menge \( A = \{z \in \Z \mid 2 \leq z \leq n\} \). Durch Lemma \ref{1.3} genügt es, zusätzlich lediglich die Menge $B = \{k \cdot p \mid k \in \Z, p \leq \sqrt{n} \ \text{prim}\}$, also alle Primzahlen $p \leq \sqrt{n}$ und deren Vielfache zu betrachten. Die Differenz $A \setminus B$ beinhaltet dann nur noch alle Primzahlen $\sqrt{n} \leq p \leq n$.
+	Diese Eigenschaft findet Anwendung im \emph{Sieb von Eratosthenes}\footnote{Nach Eratosthenes von Kryene (zw. 276 und 273 v.Chr. - 194 v.Chr.), ein griechischer Gelehrter}. Dies ist ein einfacher Algorithmus, um schnell alle Primzahlen bis $n$ zu finden. Hierfür definieren wir zunächst die Menge \( A = \{z \in \Z \mid 2 \leq z \leq n\} \). Durch Lemma \ref{1.3} genügt es, zusätzlich lediglich die Menge $B = \{k \cdot p \mid k \in \Z, p \leq \sqrt{n} \ \text{prim}\}$, also alle Primzahlen $p \leq \sqrt{n}$ und deren Vielfache zu betrachten. Die Differenz $A \setminus B$ beinhaltet dann nur noch alle Primzahlen $\sqrt{n} \leq p \leq n$.
 \end{rem*}
 
-\begin{thm}[Euklid]\autolabel
+\begin{thm}[Euklid\protect\footnotemark]\autolabel
+	\footnotetext{Nach Euklid von Alexandria (3. Jh. v.Chr.), ein griechischer Mathematiker}
 	Es gibt unendlich viele Primzahlen.
 \end{thm}
 

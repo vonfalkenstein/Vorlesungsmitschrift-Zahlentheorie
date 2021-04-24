@@ -1,0 +1,123 @@
+\chapter{Primzahltests}\filevideo{Primzahltests}
+
+Wir machen nun einen kleinen Ausflug, um die Theorien von Ordnungen und Kongruenzrechnung zu verwenden und uns über Primzahltests zu unterhalten. Eine große Frage hierbei ist, wie man für eine natürliche Zahl $n \in \N$ möglichst schnell herausfinden kann, ob sie eine Primzahl ist oder nicht.\footnote{Dieses Kapitel ist nicht klausurrelevant.}
+
+Komplexität eines Algorithmus':\\
+$L = $ Zahl der Bits, die für den Input notwendig sind
+
+\begin{exmp*}
+	Um eine natürliche Zahl $N$ zu beschreiben benötigt man $\sim\log_{10}N$ Ziffern im Dezimal oder $\sim\log_2N$ Bits.
+\end{exmp*}
+
+Wir nennen einen Algorithmus polynomiell, wenn seine Laufzeit begrenzt ist durch $c2^a$ mit $c,a > 0$.
+
+\begin{exmp*}
+	\begin{enumerate}[label={\roman*})]
+		\item Der Euklidische Algorithmus angewandt auf $M,N \in \N$ mit $M<N$ benötigt $\sim c\log_{10}N$ Schritte. Dies ist ein polynomieller Algorithmus.
+		\item Um eine Primfaktorzerlegung von $N \in \N$ naiv herzuleiten indem man alle Teiler $\leq \sqrt{N}$ probiert, benötigt man $\sim \sqrt{N} = e^{\frac{\log N}{2}} \cong e^{c2}$ Schritte. Dies nennen wir einen exponentiellen Algorithmus.
+ 	\end{enumerate}
+\end{exmp*}
+
+Die schnellste Laufzeit für eine Primfaktorzerlegung ist in $\sim c_1 e^{c_2\sqrt[3]{\log N \log\log N}}$ Schritten möglich mit $c_1,c_2 > 0$.
+
+\begin{frage*}
+	Wie kann man schnell testen, ob eine natürliche Zahl $N \in \N$ prim ist?
+\end{frage*}
+
+Fermats kleiner Satz (\ref{4.4}) besagt, dass für $N \in \N, a \in \Z, N \nmid a, N$ prim, $A^{N-1} \equiv 1 \bmod N$ gilt. (Achtung: Die Rückrichtung gilt hierbei im Allgemeinen nicht!) 
+
+\begin{defn*}
+	Eine natürliche Zahl $N$ mit $a^{N-1} \equiv 1 \bmod N$ für alle $a \in \Z$ mit $\ggt(a,N)=1$ nennen wir eine Carmichael Zahl\footnote{Nach Robert Daniel Carmichael (1879-1967), US-amerikanischer Mathematiker}.
+\end{defn*}
+
+\begin{thm*}[Alford\protect\footnotemark, Granville\protect\footnotemark, Pomerance\protect\footnotemark, 1951]
+	\footnotetext{William Robert Alford (1937-2003), ein US-amerikanischer Mathematiker}
+	\footnotetext{Andrew James Granville (geb. 1962), ein britisch-kanadischer Mathematiker}
+	\footnotetext{Carl Bernard Pomerance (geb. 1944), ein US-amerikanischer Mathematiker}
+	Es gibt unendlich viele Carmichael Zahlen.
+\end{thm*}
+
+\begin{frage*}
+	Weitere Eigenschaften von Primzahlen?
+\end{frage*}
+
+\begin{thm}[Rabin\protect\footnotemark]\autolabel\video
+	\footnotetext{Nach Michael O. Rabin (geb. 1931), ein israelischer Informatiker}
+	Sei $N$ ungerade, $a \in \Z$, $N \nmid a$. Angenommen $N-1 = 2^k \cdot m$ mit $m$ ungerade. Ist $N$ prim, dann gilt
+	\[ a^m \equiv 1 \mod N \]
+	oder es gilt $0 \leq j \leq k-1$ mit 
+	\[ a^{2^jm} \equiv -1 \mod N. \]
+\end{thm}
+
+\begin{thm*}
+	Sei $N$ ungerade, $a \in \Z$, $N \nmid a$ und $N-1 = 2^km$ mit $m$ ungerade. Ist $a^m \not\equiv 1 \bmod N$ und $a^{2^jm} \not\equiv -1 \bmod N$ für alle $0 \leq j \leq k-1$, dann ist $N$ zusammengesetzt.
+\end{thm*}
+
+\begin{defn*}
+	In diesem Fall nennen wir $a$ einen Zeugen für die Zusammengesetztheit von $N$.
+\end{defn*}
+
+\begin{thm*}
+	Sei $N$ ungerade und zusammengesetzt, Dann sind mindestens 75\% der Zahlen $1,2,\dotsc,N-1$ Zeugen für die Zusammengesetztheit von $N$.
+\end{thm*}
+
+\begin{idee*}
+	Führe den Rabin-Test mit $k$ zufällig gewählten Zahlen $a$ aus. Ist $N$ zusammengesetzt, dann ist die Wahrscheinlichkeit, dass wir einen Zeugen nach $k$ Schritten finden \( \geq 1 - \left( \frac{1}{4} \right)^k \)
+\end{idee*}
+
+\begin{rem*}
+	Wenn die verallgemeinerte Riemann-Hypothese gilt, dann gibt es für zusammengesetzte $N$ einen Zeugen $a < 2(\log N)^2$. Dies führt zu einem polynomiellen Algorithmus, der die Zusammengesetztheit von $N$ erkennt.
+\end{rem*}
+
+\section{Die Pollard'sche $\rho$-Methode}\filevideo{Pollard-$\rho$-Methode}
+\footnote{Nach John M. Pollard (geb. 1941), ein britischer Mathematiker}
+
+Angenommen $N \in \N$ ist zusammengesetzt. Unser Ziel ist, einen echten Teiler von $N$ zu finden.
+
+Sei $b \in \Z$ und betrachte die Folge $x_0,x_1,x_2,\dotsc$ von Restklassen modulo $N$, definiert auch $x_0 = 1, x_{i+1} \equiv x_i^2+b \bmod N$ für $i \geq 0$.
+
+Sei $\nu(m)$ für $m \in \N$ die größte Potenz von 2, die kleiner als $m$ ist.
+
+\begin{exmp*}
+	\( \nu(5)=4, \nu(8)=4,\nu(12)=8 \)
+\end{exmp*}
+
+Wir berechnen $\ggt(x_i-x_{nu(i)}, N)$. Unsere Erwartung ist, dass wenn wir das für $i < 4,5 N^{\frac{1}{4}}$ tun die Wahrscheinlichkeit, dass wir einen echten Teiler von $N$ gefunden haben, $> \frac{1}{2}$ ist.
+
+Hemiasdb Sei $p \leq \sqrt{N}$ ein Primteiler von $N$ und $q = \lfloor\sqrt{2p}\rfloor + 1$. Betrachte $x_0,x_1,\dotsc,x_q$ modulo $q$.
+
+\emph{1. Ziel:} Finde $0 \leq k, l \leq q$ mit $x_k-x_l \equiv  0 \bmod p$.
+
+Die Wahrscheinlichkeit, dass alle $x_0,x_1,\dotsc,x_q$ modulo $p$ verschieden sind ist $\left( 1-\frac{1}{p} \right) \cdot \left( 1-\frac{2}{p} \right) \dotsm \left( 1-\frac{q}{p} \right)$. Wie groß ist das?
+\begin{align*}
+	\log \left( 1-\frac{1}{p} \right) \cdot \left( 1-\frac{2}{p} \right) \dotsm \left( 1-\frac{q}{p} \right) &= \sum_{r=1}^q \log \left( 1 - \frac{r}{q} \right)\\
+	&\leq - \sum_{r=1}^q \frac{r}{p} = -\frac{1}{2} \frac{q(q+1)}{p}\\
+	&< -1
+\end{align*}
+Die Wahrscheinlichkeit, dass $x_0,x_1,\dotsc,x_q$ modulo $p$ paarweise verschieden sind, ist also $< e^{-1}<\frac{1}{2}$
+
+\begin{rem*}
+	$q < \sqrt{2\sqrt{N}} + 2 < 1,5 N^{\frac{1}{4}}$
+\end{rem*}
+
+Unser Problem ist nun, dass wir gerne $\ggt(x_k-x_l,N)$ für alle $0\leq k, l \leq q$ berechnen würden, dies wären jedoch $\sim N^{\frac{1}{4}} \cdot N^{\frac{1}{4}} \sim N^{\frac{1}{2}}$ Berechnungen!
+
+\begin{idee*}
+	Ist 
+	\begin{align*}
+		x_k &\equiv x_l \mod p, \\
+		\noalign{so auch}
+		x_{k+1} &\equiv x_{l+1} \mod p\\
+		x_{k+2} &\equiv x_{l+2} \mod p\\
+		\noalign{\centering $\vdots$}
+	\end{align*}
+	Angenommen, wir haben $l < k$ mit $x_k \equiv x_l \bmod p$ und $0 \leq l, k \leq q$. Wähle $m \in \N$ mit 
+	\[ 2^{m-1} < \max\{l,k-l\} \leq 2^m. \]
+	Dann gilt
+	\[ x_{k-l} \equiv x_{2^m} \mod p \]
+	und 
+	\begin{align*}
+		k-l + 2^m &< k-l + 2\max\{l,k-l\}\\
+		&\leq 4,5 N^{\frac{1}{4}}
+	\end{align*}
+\end{idee*}
