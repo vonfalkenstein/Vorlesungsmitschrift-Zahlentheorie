@@ -1,0 +1,135 @@
+\chapter{Quadratreste}\lecturefilevideo{30.4.2021}{Quadratreste, Teil 1}
+
+Bisher haben wir lineare Kongruenzgleichungen 
+\[ ax+b \equiv 0 \mod M \]
+mit $a,b \in \Z,\ M \in \N$ betrachtet. Nun wollen wir uns die Frage stellen, was passiert, wenn wir zu quadratische Kongruenzgleichungen übergehen.
+
+Seien $a,b,c \in \Z,\ M \in \N_{\geq 2}$. Wann hat die Gleichung
+\[ ax^2 + bx + c \equiv 0 \mod M \]
+eine Lösung? Laut dem chinesischen Restsatz genügt es, $M= p^k$ mit $p$ prim zu betrachten. Wir beginnen mit dem einfachsten Fall
+\[ x^2 \equiv a \mod p \]
+
+\begin{defn*}[quadratischer (Nicht-)Rest] \index{quadratischer (Nicht-)Rest}
+	Sei $a \in \Z,\ p$ prim mit $p \nmid a$. Dann nennen wir $a$ einen \emph{quadratischen Rest/Nichtrest} modulo $p$, falls $x^2 \equiv a \bmod p$ lösbar ist/keine Lösung hat.
+\end{defn*}
+
+\begin{exmp*}
+	\begin{itemize}
+		\item[$p=7$:] Quadratische Reste: 1,2 ,4\\
+		Quadratische Nichtreste: 3,5,6
+		\item[$p=5$:] Quadratische Reste: 1,4\\
+		Quadratische Nichtreste: 2,3
+	\end{itemize}
+\end{exmp*}
+
+\begin{thm}\autolabel
+	Sei $p$ eine ungerade Primzahl. Dann gibt es $\frac{p-1}{2}$ quadratische Reste und $\frac{p-1}{2}$ quadratische Nichtreste modulo $p$.
+\end{thm}
+\pagebreak
+\begin{defn*}[Legendre\protect\footnotemark{} Symbol]\index{Legendre Symbol}
+	\footnotetext{Nach Adrien-Marie Legendre (1752-1833), ein französischer Mathematiker}
+	Sei $p$ eine ungerade Primzahl und $a \in \Z$. Wir definieren das \emph{Legendre Symbol} als\video
+	\[ \left( \frac{a}{p} \right) = \begin{cases}
+		1 \qquad &\text{falls $a \equiv x^2 \bmod p$ eine Lösung hat}\\
+		-1 \qquad &\text{falls $a$ ein quadratischer Nichtrest modulo $p$ ist}\\
+		0 \qquad &p \mid a
+	\end{cases} \]
+\end{defn*}
+
+\begin{exmp*}
+	Sei $p=7$:\\
+	\( \left( \frac{1}{7} \right) = \left( \frac{2}{7} \right) = \left( \frac{4}{7} \right) = 1 \)\\
+	\( \left( \frac{7}{7} \right) = 0 \)\\
+	\( \left( \frac{3}{7} \right) = \left( \frac{5}{7} \right) = \left( \frac{1}{6} \right) = -1 \)
+\end{exmp*}
+
+\begin{thm}\autolabel
+	Sei $p$ eine ungerade Primzahl, $a,b\in \Z$. Dann gilt
+	\[ \left( \frac{ab}{p} \right) = \left( \frac{a}{p} \right) \left( \frac{b}{p} \right) \]
+\end{thm}
+
+\begin{frage*}\filevideo{Quadratreste, Teil 2}
+	Wie lassen sich die Legendre Symbole berechnen?
+\end{frage*}
+
+\begin{thm}[Euler]\autolabel
+	Sei $p$ eine ungerade Primzahl, $a \in \Z$ mit $p \nmid a$. Dann gilt
+	\[ \left( \frac{a}{p} \right) \equiv a^{\frac{p-1}{2}} \mod p. \]
+\end{thm}
+
+\begin{cor}\autolabel
+	Sei $p$ eine ungerade Primzahl. Dann gilt
+	\[ \left( \frac{-1}{p} \right) = \begin{cases}
+		1 \qquad &\text{für $p \equiv 1 \bmod 4$}\\
+		-1 \qquad &\text{für $p \equiv -1 \bmod 4$}
+	\end{cases} \]
+\end{cor}
+
+\begin{thm}[Quadratische Reziprozität]\autolabel
+	Seien $p,q$ ungerade Primzahlen mit $p \neq q$. Dann gilt\filevideo{Quadratreste, Teil 3}
+	\[ \left( \frac{p}{q} \right) \left( \frac{q}{p} \right) = (-1)^{\frac{(p-1)(q-1)}{4}}. \]
+\end{thm}
+
+\begin{thm}\autolabel
+	Sei $p$ eine ungerade Primzahl. Dann gilt
+	\[ \left( \frac{2}{p} \right) = (-1)^{\frac{p^2-1}{8}} = \begin{cases}
+		1 \quad &p \equiv \pm 1 \bmod 8\\
+		-1 \quad &p \equiv \pm 3 \bmod 8
+	\end{cases} \]
+\end{thm}
+
+\begin{exmp*}
+	\begin{align*}
+		\left( \frac{-70}{11} \right) &= \left( \frac{5}{11} \right) \left( \frac{7}{11} \right) \left( \frac{-1}{11} \right) \left( \frac{2}{11} \right)\\
+		&= \left( \frac{11}{5} \right) (-1) \left( \frac{11}{7} \right) (-1)(-1)\\
+		&= \left( \frac{1}{5} \right) (-1) \left( \frac{4}{7} \right)\\
+		&= -1
+	\end{align*}
+\end{exmp*}
+
+\begin{exmp*}
+	Bestimme $\left(\frac{3}{p}\right)$ für ungerade Primzahlen $p \neq 3$.
+	
+	\emph{Fall 1:} $p \equiv 1 \bmod 4$. Dann gilt
+	\[ \left(\frac{3}{p}\right) = \left(\frac{p}{3}\right) \]
+	und $\left(\frac{3}{p}\right) = 1 \iff p \equiv 1 \bmod 3$.
+	
+	\emph{Fall 2:} $p \equiv -1 \bmod 4$. Dann gilt
+	\[ \left(\frac{3}{p}\right) = -\left(\frac{p}{3}\right) \]
+	und $\left(\frac{3}{p}\right) = 1 \iff p \equiv 2 \bmod 3$.
+	
+	Insgesamt folgt also
+	\[ \left(\frac{3}{p}\right) = \begin{cases}
+		1 \qquad & p \equiv \pm 1 \mod 12\\
+		-1 \qquad & p \equiv \pm 5 \mod 12
+	\end{cases} \]
+\end{exmp*}
+
+\begin{thm}\autolabel
+	Es gibt unendlich viele Primzahlen $p \equiv 1 \bmod 4$.
+\end{thm}
+
+\emph{Beobachtung:} Das Legendre Symbol $\left(\frac{a}{p}\right)$ ist beinahe periodisch in $p$.\video
+
+\begin{thm}\autolabel
+	Sei $a \in \Z\setminus\{0\},\ p,q $ ungerade Primzahlen mit $p \nmid a$ und $q \nmid a$. Angenommen $a \equiv 1 \bmod 4$ und $p \equiv q \bmod |a|$, oder $a \not\equiv 1 \bmod 4$ und $p \equiv q \bmod 4|a|$, dann gilt
+	\[ \left(\frac{a}{p}\right) = \left(\frac{a}{q}\right) \]
+\end{thm}
+
+\begin{lem}\autolabel
+	Seien $u_1,\dotsc,u_r \in \Z$ ungerade. Dann gilt
+	\[ \sum_{i=1}^r \frac{u_i -1}{2} \equiv \frac{u_1 \dotsm u_r - 1}{2} \mod 2 \]
+	und
+	\[ \sum_{i=1}^r \frac{u_i^2 -1}{8} \equiv \frac{(u_1\dotsm u_r)^2-1}{8} \mod 2 \]
+\end{lem}
+
+\begin{thm}\autolabel
+	Sei $p$ eine Primzahl mit $p \equiv -1 \bmod 4$ und wir nehmen an, dass $2p + 1$ ebenfalls prim ist. Dann gilt
+	\[ 2p+1 \mid 2^p -1, \]
+	das heißt ist $p>3$, dann ist in diesem Fall $2^p-1$ keine Primzahl.
+\end{thm}
+
+\begin{thm}[Pépin]\autolabel
+	Definiere $F_n := 2^{2^n}$ für $n \in \N$. Dann gilt, dass $F_n$ genau dann prim ist, wenn gilt
+	\[ 3^{\frac{1}{2}(F_n-1)} \equiv -1 \mod F_n. \]
+\end{thm}
