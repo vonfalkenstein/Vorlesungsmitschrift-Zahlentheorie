@@ -14,6 +14,12 @@
 \DeclareNewTOC[owner=jvfscript-de,listname=Dateiverzeichnis,type=files,types=files, name=Datei]{listoffiles}
 \newcounter{file}
 \newcounter{video}
+\renewcommand{\lecture}[1]{%
+	\setcounter{video}{0}
+	\stepcounter{lecture}
+	\marginnote{\normalfont Vorlesung \thelecture, #1}
+	\addxcontentsline{listoflectures}{section}[]{Vorlesung \thelecture{} vom #1}
+}
 \newcommand{\file}[1]{%
 	\stepcounter{file}
 	\marginnote{\normalfont Datei \thefile: #1}
@@ -63,7 +69,7 @@
 
 
 
-%\includeonly{./lectures/cpt05}
+%\includeonly{./lectures/cpt06}
 
 \usetikzlibrary{patterns}
 %\usepackage[dvipsnames]{xcolor}

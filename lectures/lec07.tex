@@ -1,0 +1,43 @@
+\begin{thm}\autolabel
+	\lecture{04.05.2021}\addtocounter{video}{1}Sei $p$ eine Primzahl mit $p \equiv -1 \bmod 4$ und wir nehmen an, dass $2p + 1$ ebenfalls prim ist. Dann gilt
+	\[ 2p+1 \mid 2^p -1.\video{} \]
+\end{thm}
+
+Dieser Satz sagt insbesondere, dass für $p>3$ in diesem Fall $2^p-1$ keine Primzahl ist. Er vor allem relevant in der noch offenen Frage, ob es unendlich viele Mersenne\footnote{Nach Marin Mersenne (1588-1648), ein französischer Theologe, Mathematiker und Musiktheoretiker}-Primzahlen (also Primzahlen der Form $2^p-1$) gibt.
+
+\begin{thm}[Pépin\protect\footnotemark-Test]\autolabel
+	\footnotetext{Nach Théophile Pépin (1826-1904), ein französischer Mathematiker}
+	Definiere $F_n := 2^{2^n}+1$ für $n \in \N$. Dann gilt, dass $F_n$ genau dann prim ist, wenn gilt
+	\[ 3^{\frac{1}{2}(F_n-1)} \equiv -1 \mod F_n. \]
+\end{thm}
+
+Die im Satz \ref{6.11} definierten Zahlen $F_n$ werden Fermat-Zahlen genannt. Bisher ist noch unbekannt, ob unendlich viele der Fermat-Zahlen auch Primzahlen sind. Fermat hatte seinerzeit behauptet, alle Fermat-Zahlen seien Primzahlen, dies wurde allerdings von Euler widerlegt, der zeigte, dass $F_5$ nicht prim ist. Inzwischen wird angenommen, dass tatsächlich lediglich $F_0,\dotsc,F_4$ prim sind. Da die Fermat-Zahlen allerdings durch die doppelte Exponentialität so dünn sind ist es sehr schwer, sie tatsächlich zu überprüfen. Die kleinste bisher ungetestete Fermat-Zahl ist $F_{33}$, welche 2.585.287.973 Stellen hat.
+
+\begin{lem}[Gauß'sches Lemma]\autolabel
+	Sei\filevideo{Quadratische Reziprozität} $p>2$ eine Primzahl. Wir nennen \( 1,2,\dotsc,\frac{p-1}{2} \bmod p\) positive Restklassen und $-1,-2,\dotsc,-\frac{p-1}{2} \bmod p$ negative Restklassen $\bmod p$. Sei $a \in \Z$ mit $p \nmid a$ und $\mu$ die Zahl der negativen Restklassen in der Folge $a,2a,\dotsc,\frac{p-1}{2}a \bmod p$. Dann gilt
+	\[ \left(\frac{a}{p}\right) = (-1)^\mu. \]
+\end{lem}
+
+\begin{exmp*}
+	$\left(\frac{3}{5}\right)$:\\
+	$1,2$ positive Restklassen modulo 5\\
+	$3,4$ negative Restklassen modulo 5\\
+	$3 \cdot 1 \equiv -2,\ 3\cdot 2 \equiv 1$. Das heißt in diesem Beispiel haben wir $\mu = 1$ und $\left(\frac{3}{5}\right) = (-1)^\mu = -1$.
+\end{exmp*}
+
+\addtocounter{video}{1}
+\begin{defn*}[Untere Gaußklammer]
+	Sei\video{} $x \in \R$. Wir definieren
+	\[ \lfloor x \rfloor = \max\{m \in \Z\mid m \leq x\}. \]
+\end{defn*}
+
+\begin{exmp*}
+	\( \lfloor 3 \rfloor = 3,\ \lfloor2,8\rfloor = 2 \)
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Sei $p>2$ eine Primzahl, $a \in \Z$ mit $2 \nmid a$ und $p \nmid a$. Sei 
+	\[ S(a,p) := \sum_{s = 1}^{\frac{p-1}{2}} \left\lfloor \frac{as}{p}\right\rfloor. \]
+	Dann gilt
+	\[ \left(\frac{a}{p}\right) = (-1)^{S(a,p)}. \]
+\end{lem}
