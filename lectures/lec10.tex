@@ -1,0 +1,157 @@
+\section{Summen von drei Quadraten}\lecture{14.05.2021}
+
+\begin{frage*}
+	Für welche $n \in \N$ genügen uns sogar schon 3 Quadrate?
+\end{frage*}
+
+Erste Beobachtung: $\square \equiv 0,1,4 \bmod 8$.
+\begin{itemize}
+	\item Ist $n \in \N$ mit $n \equiv 7 \bmod 8$, dann $n \neq \square + \square + \square$
+	\item Angenommen $n \in \N$ mit $n = a^2+b^2+c^2$ mit $a,b,c \in \Z$ und $4 \mid n$. Dann haben wir
+	\[ 0 \equiv n \equiv a^2+b^2+c^2 \bmod 4. \]
+	Daraus folgt $2 \mid a$, $2\mid b$, $2 \mid c$, also
+	\[ \frac{n}{4} = \left(\frac{a}{2}\right)^2 + \left(\frac{b}{2}\right)^2 + \left(\frac{c}{2}\right)^2 \]
+\end{itemize}
+Folgerung: Ist $n = (8k+7) \cdot 4^l$ mit $k \in \Z_{\geq 0}$, $l \in \Z_{\geq 0}$, dann ist $n \neq \square + \square + \square$.\pagebreak
+
+\begin{thm}[Gauß\protect\footnotemark]\autolabel
+	\footnotetext{Nach Carl Friedrich Gauß (1777-1855), ein deutscher Mathematiker, Statistiker, Astronom, Geodät und Physiker}
+	Jedes $n \in \N$, das nicht die Form $n = 4^l(8k+7)$ mit $k,l \in \Z_{\geq 0}$ hat, kann als Summe von drei Quadraten geschrieben werden.
+\end{thm}
+
+Eine Anwendung: Dreieckszahlen, also Zahlen der Form
+\[ a_n = \frac{n(n+1)}{2}. \]
+
+\begin{cor}\autolabel
+	Jede natürliche Zahl $n \in \N$ kann als Summe von drei Dreieckszahlen geschrieben werden, das heißt $n = \triangle + \triangle + \triangle $.
+\end{cor}
+
+Allgemeiner: Sei $F(x_1,\dotsc,x_k) \in \Z[x_1,\dotsc,x_k]$ ein homogenes Polynom von Grad 2, z.B. $x_1^2 + x_3x_4 + x_2^2 + \dots$
+
+\begin{frage*}
+	Wann kann man jede natürliche Zahl schreiben als $n = F(x_1,\dotsc,x_k)$ mit $x_1,\dotsc,x_k \in \Z$?
+\end{frage*}
+
+Um diese Frage beantworten zu können benötigen wir zunächst etwas Terminologie:
+\begin{itemize}
+	\item Wir nennen $F$ \emph{positiv definit}, falls $F(x_1,\dotsc,x_k) > 0$ für alle \( (x_1,\dotsc,x_k) \in \R^k \setminus \{0\} \).
+	\item Wir nennen $F$ \emph{gerade}, falls jeder Koeffizient von $x_ix_j$ mit $i \neq j$ gerade ist.
+\end{itemize}
+
+\begin{thm*}[15-Satz von Conway\protect\footnotemark{} und Schneeburger, 1993]
+	\footnotetext{John Horton Conway (1937-2020), ein britischer Mathematiker}
+	Sei $F(x_1,\dotsc,x_k)$ eine gerade positiv definite quadratische Form mit ganzen Koeffizienten. Falls $F$ die Zahlen $n = 1,\dotsc, 15$ darstellt, dann stellt $F$ alle natürlichen Zahlen dar.
+\end{thm*}
+
+\begin{thm*}[290-Theorem von Bhargava\protect\footnotemark{} und Hanke\protect\footnotemark{}, 2005]
+	\footnotetext{Manjul Bhargava (geb. 1974), ein kanadischer Mathematiker}
+	\footnotetext{Jonathan Hanke, ein US-amerikanischer Mathematiker}
+	Sei $F$ eine positiv definite quadratische Form mit ganzzahligen Koeffizienten. Falls $F$ die Zahlen $n=1, \dotsc, 290$ darstellt, dann stellt $F$ jede natürliche Zahl dar.
+\end{thm*}
+
+\section{Das Waringsche Problem}
+
+\begin{thm*}[Jacobi]
+	Jedes $n \in \N$ kann geschrieben werden als 
+	\[ n = \square + \square + \square + \square. \]
+\end{thm*}
+
+\begin{frage*}
+	Was passiert bei höheren Potenzen? Welche Zahlen können beispielsweise geschrieben werden als
+	\[ n = a^3+b^3+c^3+d^3? \]
+\end{frage*}
+
+\begin{thm*}[Hilbert\protect\footnotemark]
+	\footnotetext{Nach David Hilbert (1862-1943), ein deutscher Mathematiker}
+	Sei $k \in \Z_{\geq 2}$. Dann gibt es eine natürliche Zahl $g(k)$, sodass jedes $n \in \N$ als Summe von höchstens $g(k)$ positiven $k$-ten Potenzen geschrieben werden kann. Das heißt für jedes $n \in \N$ gibt es $s \leq g(k),\ x_1,\dotsc,x_s \in \N$ mit $n = x_1^k + x_2^k + \dotsc + x_s^k$.
+\end{thm*}
+
+\begin{frage*}
+	Was ist der kleinstmögliche Wert für $g(k)$?
+\end{frage*}
+
+\begin{defn*}
+	Sei $g(k)$ die kleinstmögliche natürliche Zahl in Hilberts Satz.
+\end{defn*}
+
+\begin{exmp*}
+	$g(2) = 4$ (Jacobi + Gauß)\\
+	\( g(3) = 9 \)\\
+	\( g(4) = 19 \)\\
+	\( g(5) = 37 \)
+\end{exmp*}
+
+\emph{Beobachtung:} $g(k)$ wächst schnell in $k$, manchmal wegen kleinen Werten von $n$.
+
+\begin{exmp*}
+	Schreibe $2^k-1 = x_1^k + \dotsc + x_s^k$ mit $x_i \in \N$. Dann gilt $x_1 = 1$ und $s = 2^k-1$. Es folgt $g(k) \geq 2^k-1$.
+\end{exmp*}
+
+\emph{Idee:} Ist $k = 3$, dann kann jedes $n \in \N \setminus \{23,239\}$ als Summe von acht Kuben geschrieben werden.
+
+\begin{defn*}
+	Für $k \geq 2$ sei $G(k)$ die kleinste natürliche Zahl, sodass jedes hinreichend große $n \in \N$ als Summe von höchstens $G(k)$ positiven $k$-ten Potenzen geschrieben werden kann.
+\end{defn*}
+
+\emph{Bekannt:} $G(2) = 4,\ G(4) = 16,\ G(3) \leq 7$.
+
+\begin{lem}\autolabel
+	$G(3) \geq 4$
+\end{lem}
+
+\begin{thm*}[Wooley\protect\footnotemark{} 1992]
+	\footnotetext{Nach Trevor Wooley (geb. 1964), ein britischer Mathematiker}
+	Es gibt eine Konstante $C \in \R$ mit
+	\[ G(k) \leq k \log k + k \log\log k + Ck. \]
+\end{thm*}
+
+\begin{lem*}
+	\[ r_k(n) = \int_{0}^{1} T(\alpha)^s e^{-2\pi i \alpha n} \ d\alpha\]
+\end{lem*}
+
+\section{Quadratische Gleichungen in 2 Variablen über $\Q$}
+
+Seien $a,b,c,d,e,f \in \Z$ und betrachte die Gleichung 
+\[ Q(x,y) = ax^2+bxy+cy^2+dx+ey+f = 0 \]
+
+\begin{exmp*}
+	Hyperbel $x^2-y^2 = 1$\\
+	Parabel $2x^2=y$\\
+	Ellipsen $x^2+2y^2=3$\\
+	Vereinigung von zwei Geraden $(x-2y+1)(2x-y)=0$
+\end{exmp*}
+
+Wir nennen $Q(x,y)$ \emph{reduzibel} über $\Q$ oder $\C$, falls $Q(x,y) = f(x,y)g(x,y)$ mit $\grad f \geq1$ und $\grad g \geq 1$ und $f,q \in \Q[x,y]$ oder $\C[x,y]$.
+
+\begin{thm}\autolabel
+	Seien $a,b,c,d,e,f \in \Z$. Falls $ ax^2+bxy+cy^2+dx+ey+f = 0$ eine rationale Lösung hat und über $\C$ irreduzibel ist, dann hat die Gleichung unendlich viele Lösungen.
+\end{thm}
+
+\begin{exmp*}
+	\[ C: x^2+2y^2+3 \]
+	hat den rationalen Punkt $(x_0,y_0) = (1,1)$. Berechne die Gerade $L$ durch $P = (x_0,y_0)$ mit Steigung $m \in \Q$.
+	\[ L = \begin{cases}
+		x = x_0 + t\\
+		y = y_0 + t \cdot m
+	\end{cases} \]
+	Schnitt von $L$ und $C$:
+	\begin{align*}
+		(x_0+t)^2 + 2(y_0+tm)^2 &= 3\\
+		(1+t)^2 + 2(1+tm)^2 &= 3\\
+		\iff 2t + t^2 + 4tm + 2t^2m^2 &= 0\\
+		t(t+2tm^2 + 2 + 4m) &= 0
+	\end{align*}
+	\begin{align*}
+		\implies t &= 0 \ \text{oder}\\
+		t &= -\frac{2+4m}{1+2m^2}
+	\end{align*}
+	$P'$ ist gegeben durch
+	\begin{align*}
+		x_1 &= 1- \frac{2+14m}{2+2m^2} = \frac{2m^2 - 4m - 2}{1-2m^2}\\
+		y_1 &= 1-m \frac{2+4m}{1+2m^2}\\
+		&= \frac{-2m^2 - 2m+1}{1+2m^2}
+	\end{align*}
+	Alle rationalen Lösungen von $x^2+2y^2 = 3$ können beschrieben werden durch
+	\[ (x,y) = \left( \frac{2m^2-4m-1}{1+2m^2} , \frac{-2m^2 - 2m + 1}{1 + 2m^2} \right) \]
+	für $m \in \Q$.
+\end{exmp*}

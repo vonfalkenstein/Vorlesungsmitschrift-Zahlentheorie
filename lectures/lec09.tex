@@ -1,0 +1,90 @@
+\chapter{Summen von Quadraten}\lecture{11.05.2021}
+
+\section{Summen von zwei Quadraten}
+
+Die Frage, mit der wir uns in diesem Kapitel beschäftigen wollen, ist welche natürlichen Zahlen wir als Summe von zwei Quadraten schreiben können.
+
+\begin{exmp*}
+	\( 5 = 1^2+2^2 \)\\
+	\( 3 = \square + \square \)? $\implies$ keine Lösung\\
+	\( 2 = 1^2 +1^2 \)\\
+	\( 4 = 2^2 + 0^2 \)
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Seien $a,b \in \Z$, $p$ eine ungerade Primzahl mit $p \nmid ab$ und $p \mid a^2 + b^2$. Dann gilt
+	\[ p \equiv 1 \mod 4. \]
+\end{lem}
+
+\begin{cor*}
+	Ist $p \geq 3$ prim, $p = a^2+b^2$ mit $a,b \in \Z$, dann gilt $p \equiv 1 \bmod 4$.
+\end{cor*}
+
+\begin{thm}[Fermat]\autolabel
+	Sei $p$ eine Primzahl mit $p \equiv 1 \bmod 4$. Dann gibt es $a,b \in \Z$ mit $p = a^2+b^2$.
+\end{thm}
+
+\begin{lem}\autolabel
+	Angenommen $m,n \in \Z$ mit $m = a^2+b^2$ und $n = c^2 + d^2$ für gewisse $a,b,c,d \in \Z$. Dann ist auch $m \cdot n$ die Summe von zwei ganzzahligen Quadraten.
+\end{lem}
+
+Wie können wir nun alle $n \in \N$ finden, die wir als Summe von zwei Quadraten schreiben können?
+
+\begin{cor}\autolabel
+	Sei $n \in \N$. Dann gilt $n = a^2+b^2$ für $a,b \in \Z$ genau dann, wenn $n$ die Form
+	\[ n = 2^k m^2 p_1 \dotsm p_r \]
+	mit $k \geq 0$, $m \in \Z$, $p_1, \dotsc,p_r$ Primzahlen mit $p_i \equiv 1 \bmod 4$ hat.
+\end{cor}
+
+\begin{thm}[Verschärfung von Satz \ref{7.2}]\autolabel
+	Sei $n \in \N$ und definiere
+	\[ r_2(n) = \left| \left\{ (x,y) \in \Z^2 \mid n = x^2 + y^2 \right\} \right|. \]
+	\begin{enumerate}[label={\roman*})]
+		\item $\frac{r_2(n)}{4}$ ist eine multiplikative Funktion.
+		\item Sei $p$ prim und $k \in \N$. Dann gilt
+			\[ \frac{r_2(p^k)}{4} = \begin{cases}
+				k+1 \quad &\text{für } p \equiv 1 \bmod 4\\
+				0 \quad &\text{für } p \equiv 3 \bmod 4 \ \text{und $k$ ungerade}\\
+				1 \quad &\text{für } p \equiv 4 \bmod 4 \ \text{und $k$ gerade}\\
+				1 \quad &\text{für } p = 2
+			\end{cases} \]
+	\end{enumerate}
+\end{thm}
+
+\begin{exmp*}
+	$p \equiv 3 \bmod 4 \quad \checkmark$\\
+	$p = 2, 2 = (\pm 1)^2 + (\pm 1)^2$\\
+	Ist $p \equiv 1 \bmod 4$ mit $p = a^2+b^2$, dann sind auch $(\pm a,\pm b),(\pm b, \pm a)$ Lösungen.
+\end{exmp*}
+
+\begin{thm}[Dirichlet]\autolabel
+	Sei $n \in \N$. Dann gilt
+	\[ r_2(n) = 4 \sum_{\substack{d \mid n \\ d \equiv 1 \bmod 2}} (-1)^{\frac{d-1}{2}} \]
+\end{thm}
+
+\section{Summen von vier Quadraten}
+
+\begin{frage*}
+	Angenommen, wir wollen \emph{jedes} $n \in \N$ schreiben als
+	\[ n = \square + \square + \square + \square + \square + \square + \dots \]
+	Wie viele Quadrate benötigt man mindestens?
+\end{frage*}
+
+\emph{Beobachtung:} 4 Quadrate sind ausreichend.
+
+\begin{thm}[Lagrange\protect\footnotemark{} 1770]\autolabel
+	\footnotetext{Nach Joseph-Louis Lagrange (1736-1813), ein italienischer Mathematiker und Astronom}
+	Jede natürliche Zahl $n$ kann als Summe vn vier ganzzahligen Quadraten geschrieben werden.
+\end{thm}
+
+\begin{lem}\autolabel
+	Ist $m = \square + \square + \square + \square$ und $n = \square + \square + \square + \square$, dann gilt auch
+	\[ mn = \square + \square + \square + \square. \]
+\end{lem}
+
+Mit diesem Lemma können wir uns als Ziel setzen, jede beliebige Primzahl $p$ als Summe von maximal vier Quadraten zu schreiben.
+
+\begin{lem}\autolabel
+	Sei $p>2$ prim. Dann gibt es $m \in \N$ mit $m<p$ und 
+	\[ mp = \square + \square + \square + \square. \]
+\end{lem}
