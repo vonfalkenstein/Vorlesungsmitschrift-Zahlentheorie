@@ -1,0 +1,165 @@
+\chapter{Kettenbrüche}\lecture{18.05.2021}
+
+\section{Endliche Kettenbrüche}
+
+Zunächst: wir betrachten Kettenbrüche als Ausdrücke der Form
+\[ b_0 + \frac{1}{b_1 + \frac{1}{b_2 + \dots + \frac{1}{b_n}}} \]
+mit $b_0 \in \Z$, $b_1, \dotsc, b_n \in \N$. Als Kurzschreibweise benutzen wir die Notation
+\[ \langle b_0,b_1,\dotsc,b_n \rangle. \]
+
+\begin{rem*}
+	Der Wert eines endlichen Kettenbruchs ist gleich einer rationalen Zahl.
+\end{rem*}
+
+\begin{lem}\autolabel
+	Jede rationale Zahl kann als endlicher Kettenbruch geschrieben werden.
+\end{lem}
+
+\begin{cav*}
+	Die Darstellung einer rationalen Zahl in der Form eines endlichen Kettenbruchs ist im allgemeinen nicht eindeutig:
+	\[ \langle 0,1,1 \rangle = \frac{1}{1 + \frac{1}{1}} = \frac{1}{2} = \langle 0,2 \rangle \]
+\end{cav*}
+
+\begin{rem*}
+	\begin{enumerate}[label={\roman*})]
+		\item $a_m = \left\lfloor \frac{r_{m-1}}{r_m} \right\rfloor$ und \( \frac{r_{m+1}}{r_m} = \left\{ \frac{r_{m-1}}{r_m} \right\} = \frac{r_{m-1}}{r_m} - \left\lfloor \frac{r_{m-1}}{r_m} \right\rfloor. \)
+		\item \( \frac{r_1}{r_2} = \langle a_2,a_3,\dotsc,a_k \rangle \) oder im Allgemeinen
+		\[ \frac{r_{m-1}}{r_m} = \langle a_m, a_{m+1},\dotsc,a_k \rangle \]
+	\end{enumerate}
+\end{rem*}
+
+\begin{exmp*}
+	Wir wollen $\frac{137}{33}$ als Kettenbruch darstellen.
+	\begin{align*}
+		137 &= 4 \cdot 33 + 5 	& \frac{137}{33} &= 4 + \frac{5}{33}\\
+		33 &= 6 \cdot 5 + 3 	& \frac{33}{5} 	&= 6 + \frac{3}{5}\\
+		5 &= 1 \cdot 3 + 2 		& \frac{5}{3} 	&= 1 + \frac{2}{3}\\
+		3 &= 1 \cdot 2 + 1 		& \frac{3}{2} 	&=1 + \frac{1}{2}
+	\end{align*}
+	Also ist \( \frac{137}{33} = \langle 4,6,1,1,2 \rangle \)
+\end{exmp*}
+
+\section{Unendliche Kettenbrüche}
+
+Sei $\alpha \in \R \setminus \Q$. Unser Ziel ist es, $\alpha$ in der Form
+\[ \alpha = \langle a_0,a_1,a_2,\dots\rangle \]
+zu schreiben. Hierfür verwenden wir den Algorithmus aus Lemma \ref{8.1}:\\
+Sei $\alpha_0 = \alpha$.
+\[ a_0 = \lfloor \alpha_0 \rfloor,\ \alpha_1 = \frac{1}{\{\alpha_0\}}, \]
+also 
+\begin{align*}
+	\alpha &= a_0 + \{\alpha_0\}\\
+	&= a_0 + \frac{1}{\frac{1}{\{\alpha_0\}}}\\
+	&= a_0 + \frac{1}{\alpha_1}
+\end{align*}
+\[ a_1 = \langle \alpha_1 \rangle,\ \alpha_2 = \frac{1}{\{ \alpha_1 \}} \implies \alpha_1 = a_1 + \frac{1}{\alpha_2} \]
+\[ a_2 = \langle \alpha_2 \rangle,\ \alpha_3 = \frac{1}{\{ \alpha_2 \}} \]
+\[\vdots\]
+\[ a_n = \langle \alpha_n \rangle,\ \alpha_{n+1} = \frac{1}{\{ \alpha_n \}} \ \text{für } n \geq 0 \]
+
+\begin{rem*}
+	Es gilt für $i \geq 0$:
+	\[ 0 < \{\alpha_i\} < 1 \]
+	Also $\alpha_{i+1} = \frac{1}{\{\alpha_i\}} > 1$ und $a_{i+1} = \langle \alpha_{i+1} \rangle \in \N$.\\
+	Nach $n$ Schritten
+	\begin{align*}
+		\alpha &= \langle a_0,a_1,a_2,\dotsc,a_{n-1},\alpha_n \rangle\\
+		&= a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \dots + \frac{1}{a_n}}}
+	\end{align*}
+\end{rem*}
+
+\begin{rem*}
+	Ist $\alpha \in \R \setminus \Q$, dann gilt $\alpha_n \neq 0 \ \foralll n \in \N$.
+\end{rem*}
+
+Ist $\alpha = \langle a_0,a_1,a_2,\dotsc,a_{n-1},\alpha_n \rangle$ wie oben, so nennen wir als Konvention die $a_i$ \emph{Elemente} des Kettenbruchs.
+
+\begin{frage*}
+	Warum würde man $\alpha \in \R \setminus \Q$ überhaupt als Kettenbruch schreiben wollen?
+\end{frage*}
+
+\begin{idee*}
+	Die Elemente eines Kettenbruchs geben sehr gute Approximationen für die durch den Kettenbruch dargestellte Zahl.
+\end{idee*}
+
+\begin{defn*}[Teilbruch]\index{Teilbruch}
+	Sei $\alpha \in \R \setminus \Q$, $\alpha = \langle a_0,a_1,a_2,\dotsc \rangle$. Dann nennen wir für $n \in \Z_{\geq0}$
+	\[ \frac{p_n}{q_n} = \langle a_0,a_1,a_2,\dotsc,a_n \rangle \]
+	den \emph{$\emph{n}$-ten Kettenbruch} von $\alpha$.
+\end{defn*}
+
+\begin{exmp*}
+	\begin{align*}
+		\sqrt{2} &= \lfloor \sqrt{2}\rfloor + \{\sqrt{2}\}\\
+		&= \lfloor \sqrt{2}\rfloor + \frac{1}{\frac{1}{\sqrt{2}}}\\
+		a_0 &= \lfloor \sqrt{2} \rfloor = 1\\
+		\alpha_1 &= \frac{1}{\{\sqrt{2}\}}\\
+		&= \frac{1}{\sqrt{2} - 1} = \frac{\sqrt{2}+1}{(\sqrt{2} - 1)(\sqrt{2} + 1)}\\
+		&= \sqrt{2} + 1\\
+		a_1 &= \lfloor \alpha_1 \rfloor = 2\\
+		\alpha_2 &= \frac{1}{\{ \alpha_1 \}} = \frac{1}{\sqrt{2} - 1}\\
+		a_2 &= \lfloor \alpha_2 \rfloor = \lfloor \alpha_1 \rfloor = 2
+	\end{align*}
+	Es folgt $\sqrt{2} = \langle 1,2,2,2,\dotsc \rangle$\\
+	Teilbrüche:
+	\begin{align*}
+		\frac{p_0}{q_0} &= 1 \\
+		\frac{p_1}{q_1} &= \langle 1,2\rangle\\
+		&= 1 + \frac{1}{2}\\
+		\frac{p_2}{q_2} &= \langle 1,2,2\rangle\\
+		&= 1 + \frac{1}{2 + \frac{1}{2}}
+	\end{align*}
+	\[ \sqrt{2} = 1,4142\dots,\ \left| \sqrt{2} - \frac{p_2}{q_2} \right| = 0,01421\dots \]
+\end{exmp*}
+
+\begin{thm}\autolabel
+	Sei $a_0 \in \Z,\ a_1,a_2,\dots \in \N$. Definiere eine Folge $p_n,q_n$ für $n \geq -2$ wie folgt:
+	\begin{align*}
+		p_{-2} &= 0	&	q_{-2} &= 1\\
+		p_{-1} &= 1 &	q_{-1} &= 0
+	\end{align*}
+	\begin{align*}
+		p_n &= a_n p_{n-1} + p_{n-2}\\
+		q_n &= a_n q_{n-1} + q_{n-2}.
+	\end{align*}
+	Sei $n \geq 0$ und $x \in \R$ mit $x q_n + q_{n-1} \neq 0$. Dann gilt
+	\[ \langle a_0,a_1,\dotsc,a_n,x\rangle = \frac{x p_n + p_{n-1}}{x q_n + q_{n-1}} \]
+\end{thm}
+
+\begin{rem*}
+	\begin{enumerate}[label={\roman*})]
+		\item Die Brüche  $\frac{p_n}{q_n}$ sind Teilbrüche von $\langle a_0,a_1,a_2,\dotsc\rangle.$
+		\item Wir können in der Notation von Satz \ref{8.2} $\alpha_n$ berechnen, wenn wir $\alpha \in \R$ und seine Teilbrüche kennen:
+		\begin{align*}
+			\alpha &= \langle a_0,a_1,\dotsc,a_n,a_{n+1}\rangle\\
+			&= \frac{\alpha_{n+1} p_n + p_{n-1}}{\alpha_{n+1} q_n + q_{n-1}}\\
+			\implies \alpha_{n+1} &= - \frac{p_{n-1} - \alpha q_{n-1}}{p_n - \alpha q_n}
+		\end{align*}
+	\end{enumerate}
+\end{rem*}
+
+\section{Approximationseigenschaften von Kettenbrüchen}
+
+\begin{thm}\autolabel
+	Sei $\alpha = \langle a_0,a_1,a_2,\dotsc \rangle$ mit $a_0 \in \Z,\ a_1,a_2,\dotsc \in \N$. Angenommen $p_n,q_n,\ n \in \Z_{\geq 2}$ sind wie in Satz \ref{8.2} definiert. Dann gilt für $n \geq 0$
+	\[ p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1} \]
+	und
+	\[ \alpha - \frac{p_n}{q_n} = \frac{(-1)^n}{q_n(\alpha_{n+1} q_n + q_{n-1})} \]
+\end{thm}
+
+\begin{cor*}
+	\( \alpha > \frac{p_n}{q_n} \) für $n$ gerade\\
+	\( \alpha < \frac{p_n}{q_n} \) für $n$ ungerade
+\end{cor*}
+
+\begin{cor*}
+	Mit der gleichen Notation wie oben gilt
+	\[ \left| \alpha - \frac{p_n}{q_n} \right| < \frac{1}{q_nq_{n+1}} < \frac{1}{q_n^2}. \]
+\end{cor*}
+
+Die wollen wir nun mit Approximationen vergleichen, die aus der Dezimalentwicklung entstehen. Wir schreiben im Dezimalsystem
+\[ \alpha = b_0,b_1b_2b_3 \dots b_nb_{n+1} \dots \]
+Dann gilt
+\begin{align*}
+	|\alpha - b_0,b_1b_2b_3 \dots b_n| &\leq 0,00\dots01 = 10^{-n}
+\end{align*}
