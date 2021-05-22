@@ -1,0 +1,110 @@
+\begin{thm}[Legendre]\autolabel
+	\lecture{21.05.2021}
+	Sei $\alpha \in \R \setminus \Q,\ p,q \in \Z$ mit $q > 1$ und
+	\[ \left| \alpha - \frac{p}{q} \right| < \frac{1}{2q^2}. \]
+	Dann ist $\frac{p}{q}$ ein Teilbruch der Kettenbruchentwicklung von $\alpha$.
+\end{thm}
+
+\begin{defn*}
+	Für $x \in \R$ schreibe
+	\[ \|x\| = \min_{y \in \Z} |x-y| \]
+\end{defn*}
+
+\begin{thm}\autolabel
+	Sei $\alpha \in \R \setminus \Q$ mit Kettenbruchentwicklung $\alpha = \langle a_0,a_1,a_2,\dots \rangle$ und Teilbrüchen $\frac{p_q}{q_n}$ für $n \geq 0$. Dann gilt
+	\[ \|q_{n+1} \alpha \| < \| q_n\alpha \|. \]
+	Ist $s \in \N$, $1 \leq s < q_{n+1}$, dann gilt \( \|s\alpha\| \geq \|q_n\alpha\|. \)
+\end{thm}
+
+\begin{rem*}
+	Die Approximationsgüte im Legendres Theorem \ref{8.4} ist für manche $\alpha$ beinahe optimal.
+\end{rem*}
+
+\begin{exmp*}
+	Für $\alpha = \sqrt{2}$ gilt
+	\[ \left| \sqrt{2} - \frac{p}{q} \right| \geq \frac{1}{4q^2} \quad \foralll \frac{p}{q} \in \Q. \]
+\end{exmp*}
+
+\section{Kettenbrüche von quadratischen irrationalen Zahlen}
+
+\begin{exmp*}
+	Bestimme den Kettenbruch von $\alpha = \sqrt{5}$.
+	\begin{align*}
+		\sqrt{5} &= 2 + \sqrt{5} - 2\\
+		a_0 &= \lfloor \alpha \rfloor = 2\\
+		\alpha_1 &= \frac{1}{\sqrt{5}-2} = \sqrt{5} + 2\\
+		&= 4 + \sqrt{5} - 2\\
+		a_1 &= 4\\
+		\alpha_2 &= \frac{1}{\{ \alpha_1 \}}\\
+		&=\frac{1}{\sqrt{5}-2} = \alpha_1\\
+		a_2 &= \lfloor \alpha_2\rfloor = 4\\
+		\implies \sqrt{5} &= \langle 2,4,4,4,4,\dots \rangle
+	\end{align*}
+	Als Notation für die Periodizität benutzen wir $\sqrt{5} = \langle 2,\overbar{4}\rangle$.\\
+	Ähnlich kann man berechnen
+	\begin{align*}
+		\sqrt{3} &= \langle 1,\overbar{1,2}\rangle\\
+		&= \langle 1,1,2,1,2,1,2,\dots\rangle
+	\end{align*}
+\end{exmp*}
+
+\begin{obs*}
+	Die Kettenbruchentwicklung von Quadratwurzeln ist periodisch!
+\end{obs*}
+
+\begin{defn*}[quadratische irrationale Zahl, Diskriminante]\index{quadratische irrationale Zahl}\index{Diskriminante}
+	Wir nennen eine reelle Zahl $\alpha \in \R \setminus \Q$ eine \emph{quadratische irrationale Zahl}, falls $\alpha$ eine Gleichung der Form
+	\[ Ax^2+Bx+C = 0 \]
+	mit $A,B,C \in \Z,\ A > 0$ und $\ggt(A,B,C)=1$ erfüllt.\\
+	Ist $B$ ungerade, dann definieren wir
+	\[ D := B^2-4AC. \]
+	Ist $B$ gerade, dann definieren wir
+	\[ D := \frac{B^2-4AC}{4} = \left( \frac{B}{2} \right)^2 - AC. \]
+	Wir nennen $D$ die \emph{Diskriminante} von $\alpha$.
+\end{defn*}
+
+\begin{defn*}[Standardform einer quadratischen irrationalen Zahl]\index{quadratische irrationale Zahl!Standardform}
+	Sei $\alpha \in \R \setminus \Q$ eine quadratische irrationale Zahl mit Diskriminante $D$, welche Nullstelle der Gleichung
+	\[Ax^2+Bx+C = 0\]
+	mit $A,B,C \in \Z,\ A >0$ und $\ggt(A,B,C)=1$ ist. Dann gilt
+	\[ \alpha = \frac{P + \sqrt{D}}{Q} \]
+	mit
+	\[ (P,Q) = \begin{cases}
+		(\mp B, \pm 2A) \quad &B\equiv 1 \bmod 2,\\
+		(\mp \frac{B}{2}, \pm A) \quad &B \equiv 0 \bmod 2.
+	\end{cases} \]
+	Wir nennen dies die \emph{Standardform} von $\alpha$.
+\end{defn*}
+
+\begin{lem}\autolabel
+	Sei $\alpha \in \R \setminus \Q$ eine quadratische irrationale Zahl mit Diskriminante $D$ und $b \in \Z$. Dann ist $\alpha + b$ und $\frac{1}{\alpha}$ quadratische irrationale Zahlen mit Diskriminante $D$.
+\end{lem}
+
+\begin{defn*}[Konjugierte, reduzierte quadratische irrationale Zahl]\index{quadratische irrationale Zahl!Konjugierte}\index{quadratische irrationale Zahl!reduzierte}
+	\begin{enumerate}[label={\roman*})]
+		\item[]
+		\item Sei $\alpha = \frac{P + \sqrt{D}}{Q} \in \R$ eine quadratische irrationale Zahl. Dann nennen wir
+			\[ \frac{P - \sqrt{D}}{Q} \]
+			die \emph{Konjugierte} von $\alpha$.
+			\begin{notat*}
+				$\overbar{\alpha} = \frac{P- \sqrt{D}}{Q}$
+			\end{notat*}
+		\item Wir nennen eine quadratische irrationale Zahl $\alpha \in \R \setminus \Q$ \emph{reduziert}, falls $\alpha > 1$ und $-1 < \overbar{\alpha} < 0$.
+	\end{enumerate}
+\end{defn*}
+
+\begin{thm}\autolabel
+	Sei $\alpha = \frac{P + \sqrt{D}}{Q}$, $P,Q \in \Z$ und $Q \mid D - P^2$. Dann ist $\alpha$ genau dann reduziert, wenn $0 < P < \sqrt{D}$ und
+	\[ \sqrt{D} - P < Q < \sqrt{D} + P \]
+\end{thm}
+
+\begin{cor*}
+	Sei $D \in \N,\ D \neq \square$. Dann gibt es endlich viele reduzierte quadratische irrationale Zahlen mit Diskriminante $D$.
+\end{cor*}
+
+\begin{thm}\autolabel
+	Sei $\alpha \in \R \setminus \Q$ mit periodischer Kettenbruchentwicklung. Dann ist $\alpha$ eine quadratische irrationale Zahl.\\
+	Ist die Kettenbruchentwicklung von $\alpha$ rein periodisch, d.h.
+	\[ \alpha = \langle \overbar{a_0,a_1,\dotsc,a_n}\rangle, \]
+	dann ist $\alpha$ reduziert.
+\end{thm}
