@@ -1,0 +1,38 @@
+\chapter{Die Pell'sche Gleichung}
+
+Unser Ziel ist es, für $N \in \N,\ N \neq \square$, die Gleichung
+\[ x^2-Ny^2=1 \]
+zu studieren und (alle) Lösungen $(x,y)\in \Z_{\geq0}^2$ zu bestimmen.
+
+\begin{exmp*}
+	$N=2$, wir betrachten also $x^2-2y^2=1$. Als Lösungen haben wir beispielsweise $(1,0),(3,2),(17,12),\dotsc$.\\
+	Angenommen $p,q \in \N$ mit $p^2-2q^2=1$. Dann ist $\frac{p^2}{q^2} - 2 = \frac{1}{q^2}$, also 
+	\[ \frac{p^2}{q^2} \sim 2 \]
+	und $\frac{p}{q}$ ist eine gute Näherung für $\sqrt{2}$.
+\end{exmp*}
+
+\begin{thm}\autolabel
+	Sei $N \in \N,\ N \neq \square$, und $A \in \Z$ mit $|A| < \sqrt{N}$. Angenommen, $x,y \in \N$ erfüllen die Gleichung 
+	\[ y^2-Ny^2=A. \]
+	Dann ist $\frac{x}{y}$ ein Teilbruch vom Kettenbruch von $\sqrt{N}$.
+\end{thm}
+
+\begin{notat*}
+	Schreibe $\frac{p_n}{q_n}$ für den $n$-ten Teilbruch der Kettenbruchentwicklung von $\sqrt{N}$.
+	\[ \alpha_0 = \sqrt{N},\quad \alpha_{n+1} = \frac{1}{\{\alpha_n\}} \]
+	Schreibe
+	\[ \alpha_n = \frac{P_n + \sqrt{N}}{Q_n} \]
+	mit $P_n,Q_n \in \Z$.
+\end{notat*}
+
+\begin{thm}\autolabel
+	In der selben Notation wie oben gilt für $n \geq 0$
+	\[ p_n^2-Nq_n^2 = (-1)^{n+1} Q_{n+1}. \]
+\end{thm}
+
+\begin{thm}\autolabel
+	Sei $N \in \N,\ N \neq \square$, und $\sqrt{N} = \langle a_n,a_1,\dotsc,a_n,\dotsc\rangle$ mit Teilbrüchen $\frac{p_n}{q_n}$. Seien $x,y \in \N$. Dann ist $(x,y)$ genau dann eine Lösung der Gleichung
+	\[ x^2-Ny^2=\pm 1 \]
+	wenn es $n \geq 0$ gibt mit $a_{n+1} = 2 \lfloor \sqrt{N} \rfloor$ und $x=p_n,\ y=q_n$. In diesem Fall ist
+	\[ x^2-Ny^2 = (-1)^{n+1}. \]
+\end{thm}
