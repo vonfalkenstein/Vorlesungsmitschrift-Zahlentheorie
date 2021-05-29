@@ -1,0 +1,105 @@
+\begin{cor}\autolabel
+	\lecture{28.05.2021}
+	Ist $N \in \N,\ N \neq \square,$ so hat die Gleichung $x^2-Ny^2=1$ eine Lösung $(x,y) \in \N^2$.
+\end{cor}
+
+\begin{frage*}
+	Wie können wir alle Lösungen zu $x^2-Ny^2=1$ finden?
+\end{frage*}
+
+Angenommen $x_1,x_2,y_1,y_2 \in \N$ mit $x_1^2-Ny_1^2=1$ und $x_2^2-Ny_2^2=1$. Schreibe
+\[ x_1^2-Ny_1^2 = (x_1+\sqrt{N}y_1)(x_1 - \sqrt{N}y_1). \]
+Sei $\begin{aligned}[c]
+	\alpha_1 &= x_1 + \sqrt{N}y_1\\\alpha_2 &= x_2 + \sqrt{N}y_2
+\end{aligned}$. Dann gilt
+\[ \alpha_1 \bar{\alpha}_1 = 1,\quad \alpha_2 \bar{\alpha}_2 = 1 \]
+mit $\bar{\alpha}_1 = x_1 - \sqrt{N}y_1$ der Konjugierten von $\alpha_1$. Es folgt
+\[ \alpha_1 \alpha_2 \bar{\alpha}_1 \bar{\alpha}_2 = 1. \]
+Berechne
+\begin{align*}
+	\alpha_1 \alpha_2 &= (x_1 + \sqrt{N}y_1) (x_2 + \sqrt{N}y_2)\\
+	&= x_1x_2+Ny_1y_2 + (x_1y_2+x_2y_1)\sqrt{N}
+\end{align*}
+Dann ist
+\[ \big( x_1x_2 + Ny_1y_2, x_1y_2+x_2y_1 \big) \]
+eine Lösung von $x^2-Ny^2=1$.
+
+\begin{frage*}
+	Wie viele Lösungen benötigt man, um auf diese Weise \emph{alle} Lösungen von $x^2-Ny^2=1$ zu konstruieren?
+\end{frage*}
+
+\begin{thm}\autolabel
+	Seien $p,q \in \Z_{\geq 0}$ eine Lösung der Gleichung
+	\[ x^2-Ny^2=1, \]
+	sodass die reelle Zahl $p+q\sqrt{N}$ minimal ist. Sei $x,y \in \N$ eine weitere Lösung von $x^2-Ny^2=1$. Dann gilt
+	\[ x+y\sqrt{N} = \left( p+q\sqrt{N} \right)^n \]
+	für ein gewisses $n \in \N$.
+\end{thm}
+
+\begin{frage*}
+	Gibt es Quadratzahlen, die gleichzeitig Dreieckszahlen sind?
+\end{frage*}
+
+Ja, z.B. $n=1$. Aber gibt es noch weitere Beispiele?\\
+Wir suchen $m,n \in \N$ mit 
+\begin{align*}
+	m^2 &= \frac{n(n+1)}{2}\\
+	\iff 8m^2 &= 4n^2+4n\\
+	\iff 8m^2+1 &= 4n^2+4n+1\\
+	(2n+1)^2 -8m^2 &= 1
+\end{align*}
+
+Wir kennen bereits eine Lösung, nämlich $m=n=1$. Alle Lösungen enthalten wir aus den Ausdrücken
+\[ \left( 3+\sqrt{8} \cdot 1 \right)^n,\quad n \in N, \]
+z.B. \( (3+\sqrt{8} \cdot 1)^2 = 17+6\sqrt{8} \). Also ist $n=8,m=6$ eine weitere Lösung.
+
+Betrachten wir nun eine weitere Anwendung.
+\begin{frage*}
+	Was ist der minimale nicht-triviale Abstand zwischen einem Quadrat und einem Kubus?
+\end{frage*}
+
+Ein Beispiel ist $3^2-2^3 = 1$. Gibt es noch mehr Lösungen zu $x^2-y^3=1$ mit $x,y \in \N$?
+
+%Die Catalan\footnote{nach Eugène Charles Catalan (1814-1894), ein belgischer Mathematiker}-Vermutung besagt, dass die Gleichung $x^a-y^b=1$ für $x,y \in \N$ und $a,b \in \Z_{\geq 2}$ nur die Lösung $3^2-2^3=1$ hat. Dies wurde 2002 von Preda Mih\u{a}ilescu bewiesen. \image{preda}{5cm}
+
+%Die Catalan\footnote{nach Eugène Charles Catalan (1814-1894), ein belgischer Mathematiker}-Vermutung besagt, dass die Gleichung $x^a-y^b=1$ für $x,y \in \N$ und $a,b \in \Z_{\geq 2}$ nur die Lösung $3^2-2^3=1$ hat. Dies wurde 2002 von Preda Mih\u{a}ilescu bewiesen.
+\begin{wrapfigure}{r}{7cm}
+	\begin{center}
+		\includegraphics[width=5cm]{preda}
+		\caption{Preda Mih\u{a}ilescu}
+	\end{center}
+\end{wrapfigure}
+Die Catalan\footnote{nach Eugène Charles Catalan (1814-1894), ein belgischer Mathematiker}-Vermutung besagt, dass die Gleichung $x^a-y^b=1$ für $x,y \in \N$ und $a,b \in \Z_{\geq 2}$ nur die Lösung $3^2-2^3=1$ hat. Dies wurde 2002 von Preda Mih\u{a}ilescu\footnote{geb. 1955, ein in der Schweiz und in Deutschland wirkender rumänischer Mathematiker} bewiesen.
+
+\begin{obs*}
+	Der Abstand $x^2-y^3$ ist meistens \emph{viel größer} als 1 für hinreichend große $x,y \in \N$.
+\end{obs*}
+
+\begin{conj*}[Hall, 1969]
+	Es gibt eine Konstante $C>0$ mit folgender Eigenschaft:\\
+	Sind $x,y \in \N$ mit $x^3 \neq y^2$, dann ist
+	\[ |x^2-y^2| > C x^\frac{1}{2}. \]
+\end{conj*}
+
+\begin{prop*}
+	Es gibt eine Konstante $\tilde{c}$, sodass
+	\[ |x^3-y^2| \leq \tilde{c} x^\frac{1}{2} \]
+	unendlich viele Lösungen $(x,y) \in \N^2$ hat.
+\end{prop*}
+
+Betrachte
+\[ \left( -5+ (u-3)^2 \right)^3 - (u^2+1) (u^2-9u+19)^2 = 27 (2u-11). \]
+Wähle $u \in \Z$ mit $u^2+1 = 125v^2$, wobei $v\in \Z$ und $u \equiv 3 \bmod 5$. Sei
+\begin{align*}
+	x &= -1 + \frac{(u-3)^2}{5}\\
+	y &= v(u^2-9u+19)
+\end{align*}
+Dann ist
+\[ x^3-y^2 = \frac{27(2u-11)}{125}. \]
+Es gilt
+\begin{align*}
+	\frac{|x^3-y^2|}{\sqrt{x}} &= \frac{27 |2u-11| \sqrt{5}}{125 \sqrt{(u-3)^2-5}}\\
+	&\overset{u \to \infty}{\longrightarrow} \frac{2 \cdot 27}{25 \cdot \sqrt{5}}
+\end{align*}
+Das heißt es gibt eine Folge von natürlichen Zahlen $(x_n,y_n)$ mit
+\[ \frac{\left| x_n^3-y_n^2 \right|}{\sqrt{x_n}} \overset{n \to \infty}{\longrightarrow} \frac{54}{25 \sqrt{5}}. \]

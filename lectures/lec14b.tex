@@ -1,0 +1,32 @@
+\chapter{Die $abc$-Vermutung}
+
+1986: Masser\footnote{David Masser (geb. 1948), ein britischer Mathematiker} und Oesterlé\footnote{Joseph Oesterlé (geb. 1954), ein französischer Mathematiker} studieren die Gleichung
+\[ a+b=c \]
+in $a,b,c \in \N$.
+
+\begin{obs*}
+	\begin{itemize}
+		\item Werden $a$ und $b$ durch hohe Potenzen von kleinen Primzahlen geteilt, dann gilt das für $c$ nicht.
+		\item Sei $p_1,\dotsc,p_r$ die Menge von Primzahlen, die eine der Zahlen $a,b,c$ teilen. Dann ist $p_1 \dotsm p_r$ relativ groß im Vergleich zu $\max\{|a|,|b|,|c|\}$.
+	\end{itemize}
+\end{obs*}
+
+\begin{exmp*}
+	\begin{enumerate}[label={\roman*})]
+		\item $2^4+3^3 = 16+27=43 \implies p_1p_2p_3 = 6 \cdot 43$
+		\item Selbst experimentieren!
+	\end{enumerate}
+\end{exmp*}
+
+\begin{defn*}[Radikal] \index{Radikal}
+	Sei $n \in \N$ mit Primfaktorzerlegung
+	\[ n = p_1^{k_1} p_2^{k_2} \dotsm p_r^{k_r} \]
+	mit $p_1 < p_2 < \dots < p_r$. Dann definieren wir das \emph{Radikal} von $n$ als 
+	\[ \rad(n):= p_1 \dotsm p_r. \]
+\end{defn*}
+
+\begin{conj*}[$abc$-Vermutung]
+	Seien $a,b,c \in \N$ mit $a+b=c$ und $\ggt(a,b,c)=1$. Dann gibt es für jedes $\epsilon > 0$ eine Konstante $C_0(\epsilon) > 0$ mit folgender Eigenschaft:\\
+	Ist $c > C_0(\epsilon)$, dann ist 
+	$$c < \rad(abc)^{1+\epsilon}.$$
+\end{conj*}
