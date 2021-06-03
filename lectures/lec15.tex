@@ -1,0 +1,111 @@
+\begin{rem*}\lecture{01.06.2021}
+	Warum benötigen wir $+\epsilon$ in der Vermutung?\\
+	Hierfür betrachten wir $a=1,b=3^{2^n}-1,c=3^{2^n}$. Dann ist $a+b=c$ mit $\ggt(a,b,c)=1$. Es gilt
+	\[ 2^{n+1} \mid 3^{2^n}-1. \]
+	Also
+	\begin{align*}
+		\rad(abc) &= \rad \left( \left( 3^{2^n}-1 \right) 3^n \right)\\
+		&= \rad \left( 3^{2^n} -1 \right) \rad(3^n)\\
+		&\leq \frac{3^{2^n}-1}{2^n} \cdot 3\\
+		&\leq \frac{3c}{2^n}
+	\end{align*}
+	Es folgt also
+	\[ c > \frac{2^n}{3} \rad(abc). \]
+\end{rem*}
+
+\subsubsection*{Was ist bekannt zur $abc$-Vermutung?}
+
+\begin{thm*}[Stewart \& Kunrui Yu, 1991]
+	Für jedes \( \epsilon>0 \) gibt es eine Konstante $C_0(\epsilon)$, sodass gilt: Sind $a,b,c \in \N$ mit $a+b=c$ und $\ggt(a,b,c)=1$, so ist
+	\[ c < \max \left\{ C_0(\epsilon), e^{\rad(abc)^{\frac{1}{3}+\epsilon}} \right\}. \]
+\end{thm*}
+
+\begin{thm*}[Pastén, 2017]
+	Für jedes $\epsilon>0$ gibt es eine Konstante $C_0(\epsilon)$ mit folgender Eigenschaft: Sind $a,b,c \in \N$ mit $a+b=c$ und $\ggt(a,b,c)=1$, so gilt
+	\[ d(abc) < C_0(\epsilon) \cdot \rad(abc)^{\frac{8}{3}+\epsilon}, \]
+	wobei $d$ die Teilerfunktion ist.
+\end{thm*}
+
+\begin{conj*}[Schwache $abc$-Vermutung]
+	Es gibt eine Konstante $\gamma>0$, sodass für alle $a,b,c \in \N$ mit $a+b=c$ und $\ggt(a,b,c)=1$ gilt
+	\[ c \leq \rad(abc)^\gamma. \]
+\end{conj*}
+
+2012 behauptete Mochizuki\footnote{Shin’ichi Mochizuki (geb. 1969), ein japanischer Mathematiker}, die $abc$-Vermutung könne mit einer von ihm entwickelten "interuniversellen Teichmüller-Theorie". Dies erregte viel Aufmerksamkeit, allerdings widerlegten 2018 Scholze\footnote{Peter Scholze (geb. 1987), ein deutscher Mathematiker} und Stix\footnote{Jakob Stix (geb. 1974), ein deutscher Mathematiker} die Beweisideen von Mochizuki.
+
+\section{Folgerungen aus der $abc$-Vermutung}
+
+%\subsection{Quadratfreie Werte von Polynomen}
+
+\begin{defn*}[Quadratfreie Zahl]\index{Quadratfreie Zahl}
+	Wir nennen eine natürliche Zahl $m \in \N$ \emph{quadratfrei}, falls für jede Primzahl $p$ mit $p \mid m$ zusätzlich $p^2 \nmid m$ gilt.
+\end{defn*}
+
+\begin{frage*}
+	Für welche natürlichen Zahlen $n \in \N$ ist $ n^4+1 $ quadratfrei?
+\end{frage*}
+
+\begin{conj*}
+	\[ \left| \left\{ 1 \leq n \leq X \mid n^4+1 \ \text{ist quadratfrei} \right\} \right| \cong X \prod_p \left( 1-\frac{C_p}{p} \right) \]
+	mit 
+	\[ C_p = \left| \left\{ n \bmod p^2 \mid p^2 \mid n^4+1 \right\} \right| \]
+\end{conj*}
+
+\begin{thm*}[Granville, 1998]
+	Angenommen die $abc$-Vermutung gilt. Sei $f \in \Z[x]$. Dann nimmt $f$ die erwartete Zahl von quadratfreien Werten an.
+\end{thm*}
+
+\begin{thm*}[Poonen\protect\footnotemark{}, 2003]
+	\footnotetext{Bjorn Poonen (geb. 1968), ein US-amerikanischer Mathematiker}
+	Granvilles Satz gilt auch für Polynome in mehreren Variablen.
+\end{thm*}
+
+\begin{frage*}
+	Bestimmt alle $m,n \in \N$ mit $n!+1=m^2$.
+\end{frage*}
+
+Lösungen, die wir kennen, sind beispielsweise \( 4!+1=5^2, 5!+^=11^2, 7!+1=71^2,\dots \)\\
+Angenommen, $m,n \in \N$ mit $n!+1=m^2$. Dann gilt
+\begin{align*}
+	n! &= m^2-1 \\ &=(m-1)(m+1)
+\end{align*}
+Ist $n \geq 2$, dann sind $m-1$ und $m+1$ beide gerade und aus Primfaktoren $\geq n$ aufgebaut. Wir wissen
+\begin{align*}
+	\frac{m-1}{2}+1 = \frac{m+1}{2}
+\end{align*}
+Berechne
+\[ \rad \left( \frac{m-1}{2} \cdot \frac{m+1}{2} \right) \leq \prod_{p \leq n} p.\]
+Wenn die schwache $abc$-Vermutung mit einem $\gamma>0$ gilt, so erhalten wir
+\begin{align*}
+	\frac{m+1}{2} &< \left( \rad \left( \frac{m-1}{2} \frac{m+1}{2} \right) \right)^\gamma\\
+	&\leq \left( \prod_{p \leq n} p \right)^\gamma
+\end{align*}
+Man kann zeigen
+\[ \prod_{p \leq n}p < 4^n. \]
+Daraus folgt
+\[ \frac{\sqrt{n!}}{2} < \frac{m+1}{2} < 4^{\gamma n}. \]
+Gilt die schwache $abc$-Vermutung, dann gibt es höchstens endlich viele Lösungen der Gleichung
+\[ n!+1 = m^2. \]
+
+\begin{conj*}[Schwache Hall-Vermutung]
+	Sei $0 < \delta < \frac{1}{2}$. Dann gibt es höchstens endlich viele Paare $x,y \in \N$ mit
+	\[ 0 < |x^3-y^2| < x^\delta. \]
+\end{conj*}
+
+\begin{thm*}
+	Die $abc$-Vermutung impliziert die schwache Hall-Vermutung.
+\end{thm*}
+
+\begin{frage*}
+	Gibt es unendlich viele Primzahlen $p$, sodass $2{p-1} \equiv 1 \bmod p^2$?
+\end{frage*}
+
+\begin{rem*}
+	Ist $p$ ungerade, so gilt nach Eulers Satz
+	\[ 2^{p-1} \equiv 1 \bmod p. \]
+\end{rem*}
+
+\begin{thm*}[Silverman\protect\footnotemark{}, 1988]
+	\footnotetext{Joseph Hillel Silverman (geb. 1955), ein US-amerikanischer Mathematiker}
+	Angenommen die $abc$-Vermutung gilt. Dann gibt es unendlich viele Primzahlen $p$ mit $2^{p-1} \not\equiv 1 \bmod p^2$.
+\end{thm*}
