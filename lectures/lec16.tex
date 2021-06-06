@@ -1,0 +1,52 @@
+\section{Die $abc$-Vermutung für Polynomringe}
+\lecture{04.06.2021}
+\begin{idee*}
+	Ersetze den Ring der ganzen Zahlen $\Z$ durch einen anderen Ring. Zunächst erstmal Polynomringe, z.B. $\Q[x]$. Wir studieren hier die Gleichung $a+b=c$.
+\end{idee*}
+
+Sei $F$ im Folgenden gleich $\Q,\C$ oder $\R$. Studiere den Ring $F[x]$.
+
+\begin{rem*}
+	Es gibt in $F[x]$ eine eindeutige Primfaktorzerlegung:\\
+	Sei $f \in F[x],\ f \neq 0$. Dann können wir $f$ als Produkt schreiben
+	\[ f = \phi P_1^{k_1} \cdot P_2^{k_2} \dotsm P_r^{k_r} \]
+	mit $P_1,\dotsc,P_r$ paarweise verschiedene irreduzible\footnote{$g \in F[x]$ ist irreduzibel, falls aus $g = h \cdot p$ mit $h,p \in F[x]$ folgt $h \in F$ oder $p \in F$.} normierte\footnote{Das heißt der führende Koeffizient ist 1.} Polynome, $\phi \in F$ und $k_1,\dotsc,k_r \in \N,\ r \geq 0$.\\
+	Diese Darstellung ist bis auf Reihenfolge der Faktoren eindeutig.
+\end{rem*}
+
+\begin{defn*}[Radikal eines Polynoms]\index{Radikal!eines Polynoms}
+	Sei $f \in F[x] \setminus\{0\}$ gegeben in der Primfaktorzerlegung wie oben. Dann definieren wir das Radikal von $f$ als
+	\[ \rad(f) := P_1 \cdot P_2 \dotsm P_r. \]
+\end{defn*}
+
+\begin{exmp*}
+	\begin{enumerate}[label={\roman*})]
+		\item $F=\Q,\ f = x^2+2x+1 = (x+1)^2$. Dann ist \[ \rad(f) = x+1. \]
+		\item $F = \C,\ f = x^2+1$. Dann ist $f = (x+i)(x-i)$ und \[ \rad(f) = (x+i)(x-i) = f. \]
+	\end{enumerate}
+\end{exmp*}
+
+\begin{defn*}
+	Sind $f,g \in F[x]$ mit Primfaktorzerlegungen
+	\begin{align*}
+		f &= \phi_f \prod_{i=1}^n P_i^{k_i}\\
+		g &= \phi_g \prod_{i=1}^n P_i^{l_i}
+	\end{align*}
+	mit $P_1,\dotsc,P_n$ paarweise verschiedene irreduzible normierte Polynome und $k_i,l_i \geq 0$. Dann definieren wir
+	\[ \ggt(f,g) = \prod_{i=1}^n P_i^{\min(k_i,l_i)}. \]
+\end{defn*}
+
+\begin{lem}\autolabel
+	Sei $f \in F[x]$ mit Primfaktorzerlegung
+	\[ f = \phi \prod_{i=1}^r P_i^{k_i}, \]
+	$\phi \in F,\ P_1,\dotsc,P_r$ paarweise verschiedene irreduzible normierte Polynome, $k_1,\dotsc,k_r \in \N$. Dann gilt
+	\begin{enumerate}[label={\roman*})]
+		\item $\ggt(f,f') = P_1^{k_1-1} \dotsm P_r^{k_r-1}$.\\
+		\item $\phi \rad(f) = \frac{f}{\ggt(f,f')}$.
+	\end{enumerate}
+\end{lem}
+
+\begin{thm*}[Die $ABC$-Vermutung für Polynome]
+	Seien $A,B,C \in F[x]$, nicht alle konstant, mit $A+B=C$ und $\ggt(A,B,C) = 1$. Dann gilt
+	\[ \max\big\{ \grad(A),\grad(B),\grad(C) \big\} \leq \grad\big(\rad(A,B,C)\big)-1. \]
+\end{thm*}
