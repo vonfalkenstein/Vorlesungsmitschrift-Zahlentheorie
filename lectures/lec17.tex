@@ -1,0 +1,102 @@
+\chapter{Irrationale Zahlen}\lecture{08.06.2021}
+
+Rationale Zahlen $\Q$: $\frac{a}{b}$ mit $a \in \Z$, $b \in \N$.\\
+Irrationale Zahlen: $\R \setminus \Q$.
+
+\begin{frage*}
+	Wie erkennt man, ob eine reelle Zahl $\alpha \in \R$ rational ist?
+\end{frage*}
+
+\begin{exmp*}
+	$\sqrt{15}$ ist irrational:
+	\[ \sqrt{15} = \frac{p}{q},\ p,q \in \Z \implies 15q^2 - p^2 = 0 \]
+	Diese Gleichung hat allerdings keine ganzzahlige Lösung mit $\ggt(p,q)=1$.
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Sei $F(x) = x^m + c_1x^{m-1} + \dots + c_{m-1}x + c_m \in \Z[x]$ mit $c_m \neq 0$. Angenommen $\alpha \in \R$ mit $F(\alpha) \neq 0$. Dann gilt entweder
+	\begin{itemize}
+		\item $\alpha \in \Z$ und $\alpha \mid c_m$
+		\item[] oder
+		\item $\alpha$ ist irrational.
+	\end{itemize}
+\end{lem}
+
+\begin{cor*}
+	Sei $m \in \N$ und $N \in \N$, sodass $N$ keine $m$-te Potenz einer natürlichen Zahl ist. Dann ist $\sqrt[m]{N}$ irrational.
+\end{cor*}
+
+\begin{frage*}
+	Finden wir weitere Beispiele von irrationalen Zahlen?
+\end{frage*}
+
+\begin{thm}\autolabel
+	$e = \sum_{k=0}^{\infty} \frac{1}{k!}$ ist irrational.
+\end{thm}
+
+Zahlen, von denen wir nicht wissen, ob sie irrational sind:
+\begin{itemize}
+	\item Eulersche Konstante $\gamma = \lim_{n \to \infty} \left( 1 + \frac{1}{2} + \dots + \frac{1}{n} - \log n \right)$
+	\item $e \cdot \pi,\ e + \pi$
+	\item \( \sum_{k=1}^\infty \frac{1}{k!+1} \) (Frage von Erdős\footnote{Paul Erdős (1913-1996), ein ungarischer Mathematiker})
+\end{itemize}
+
+\begin{thm}\autolabel
+	Sei $a \in \Q \setminus \{0\}$. Dann ist $e^a$ irrational.
+\end{thm}
+
+\begin{thm}\autolabel
+	$\pi^2$ ist irrational (und damit auch $\pi$).
+\end{thm}
+
+\begin{defn*}[Legendre Polynom] \index{Legendre Polynom}
+	Sei $m \in \Z_{\geq 0}$. Wir nennen
+	\[ P_m(t) := \frac{1}{m!} \left( \frac{d}{dt} \right)^m \big( t^m (1-t)^m \big) \]
+	das $m$-te \emph{Legendre Polynom}.
+\end{defn*}
+
+\begin{exmp*}
+	$P_0(t)=1$\\
+	$P_1(t) = \frac{d}{dt} \big( t(1-t) \big) = 1-2t$\\
+	$P_2(t) = 1-6t+6t^2$
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Sei $m \in \Z_{\geq 0}$. Dann ist $P_m(t) \in \Z[t].$
+\end{lem}
+
+\begin{lem}\autolabel
+	Sei $n \in \Z_{\geq 0}$. Dann ist
+	\[ \pi \int_{0}^{1} t^n \sin(\pi t) \ dt \]
+	ein Polynom in $\frac{1}{\pi^2}$ mit ganzzahligen Koeffizienten von Grad $\leq \left\lfloor \frac{n}{2} \right\rfloor$, das heißt es gibt ein $g \in \Z[x]$ mit \( \grad g \leq \left\lfloor \frac{n}{2} \right\rfloor \) und
+	\[ \pi \int_{0}^{1} t^n \sin(\pi t) \ dt = g \left(\frac{1}{\pi^2}\right). \]
+\end{lem}
+
+\begin{lem*}
+	Sei $n \in \Z_{\geq 0}$, $a \in \R\setminus\{0\}$. Dann gibt es Polynome $A_n(x), B_n(x) \in \Z[x]$ von Grad $\leq n$ mit
+	\[ a \int_{0}^{1} t^n e^{at} \ dt = A_n \left( \frac{1}{a} \right) + B_n \left( \frac{1}{a} \right) e^a. \]
+\end{lem*}
+
+\section{Transzendente Zahlen}
+
+\begin{defn*}[transzendente Zahlen]\index{transzendente Zahlen}
+	Wir nennen $\alpha \in \R$ \emph{transzendent}, falls $\alpha$ keine Nullstelle eines Polynoms $P(x) \in \Z[x]\setminus\{0\}$ ist. Ist $\alpha$ nicht transzendent nennen wir es \emph{algebraisch}.
+\end{defn*}
+
+\begin{rem*}
+	$\Q \subset \{\text{algebraische Zahlen}\} \subset \R$
+\end{rem*}
+
+\begin{thm}\autolabel
+	Die reelle Zahl 
+	\( \alpha = \sum_{k=0}^\infty \frac{1}{2^{k!}} \)
+	ist transzendent.
+\end{thm}
+
+Beispiele von transzendenten Zahlen:
+\begin{itemize}
+	\item \( \sum_{k=0}^\infty \frac{1}{2^{2^k}} \) (Mahler\footnote{Kurt Mahler (1903-1988), ein deutschstämmiger britischer Mathematiker} 1930)
+	\item \( \sum_{k=1}^\infty 2^{-k^2} \) (Nishioka\footnote{Kumiko Nishioka (geb. 1954), ein japanischer Mathematiker} \& Duveney 1996)
+	\item $\pi$ ist transzendent (Hermite\footnote{Charles Hermite (1822-1901), ein französischer Mathematiker} 1873)
+	\item $e$ ist transzendent (Lindemann\footnote{Carl Louis Ferdinand Lindemann (1852-1939), ein deutscher Mathematiker} 1882)
+\end{itemize}
