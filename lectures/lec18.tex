@@ -1,0 +1,111 @@
+\chapter{Charaktere und Gauß-Summen}
+\lecture{11.06.2021}
+\begin{idee*}
+	Wir wollen für eine endliche abelsche Gruppe $G$ Gruppenhomomorphismen
+	\[ \chi: G \to \C^* \]
+	studieren. Dabei liegt unser Fokus zunächst auf $G \cong (\Z/m\Z)^*$ für ein $m \in \N$.
+\end{idee*}
+
+\begin{defn*}[Charakter] \index{Charakter}
+	Sei $m \in \N$. Ein \emph{multiplikativer Charakter modulo \( \emph{m} \)} ist ein Gruppenhomomorphismus
+	\[ \chi: (\Z/m\Z)^* \to \C^*, \]
+	sodass gilt $\chi(ab) = \chi(a)\chi(b)\ \foralll a,b \in (\Z/m\Z)^*$.
+\end{defn*}
+
+\begin{exmp*}
+	Ist $p$ prim, dann ist das Legendre-Symbol
+	\[ \left(\frac{\cdot}{p}\right): (\Z/p\Z)^* \to \{\pm 1\} \]
+	ein multiplikativer Charakter modulo $p$.
+\end{exmp*}
+
+\begin{frage*}
+	Wie können wir einen multiplikativen Charakter modulo $m$ zu einer Funktion \[ \chi: \Z \to \C \] erweitern?
+\end{frage*}
+
+\begin{defn*}[Dirichlet-Charakter] \index{Charakter!Dirichlet-Charakter}
+	Sei $n \in \N$. Ein \emph{Dirichlet-Charakter modulo $\emph{m}$} ist eine Funktion
+	\[ \chi: \Z \to \C \]
+	mit den Eigenschaften
+	\begin{enumerate}[label={\roman*})]
+		\item $\chi(a) = 0 \iff \ggt(a,m)>1$.
+		\item Ist $a \equiv b \bmod m$, dann gilt $\chi(a)=\chi(b)$.
+		\item Für $a,b \in \Z$ gilt $\chi(a)\chi(b)=\chi(ab)$.
+	\end{enumerate}
+\end{defn*}
+
+\begin{rem*}
+	Ist $\chi : Z \to \C$ ein Dirichlet-Charakter modulo $m$, so induziert $\chi$ einen multiplikativen Charakter $\tilde{\chi}$ modulo $m$ durch
+	\[ \tilde{\chi}: (\Z/m\Z)^* \to \C^*,\quad \bar{a} \mapsto \chi(a). \]
+\end{rem*}
+
+\begin{exmp*}
+	\begin{enumerate}[label={\roman*})]
+		\item Für $p$ prim ist das Legendre-Symbol $\left(\frac{\cdot}{p}\right)$ ein Dirichlet-Charakter modulo $p$.
+		\item Sei $m \in \N$ und definiere $\chi_0: \Z \to \C$ durch
+			\[ \chi_0(a) = \begin{cases}
+				0 &\ggt(a,m)>1\\
+				1 &\ggt(a,m)=1
+			\end{cases} \]
+			Dann ist $\chi_0$ ein Dirichlet-Charakter modulo $m$. Wir nennen $\chi_0$ den \emph{Hauptcharakter} modulo $m$.
+	\end{enumerate}
+\end{exmp*}
+
+Wir wollen nun erste Eigenschaften von Dirichlet-Charakteren betrachten.
+
+\begin{lem}\autolabel
+	Sei $m \in \N$ und $\chi$ ein Dirichlet-Charakter modulo $m$. Dann gilt
+	\begin{enumerate}[label={\roman*})]
+		\item $\chi(1)=1$.
+		\item Ist $a \in \Z$ mit $\ggt(a,m)=1$, so ist $\chi(a)$ eine $\varphi(m)$-te Einheitswurzel, d.h. $\chi(a)^{\varphi(m)}=1$.
+		\item Die Funktion $\bar{\chi}: \Z \to \C$ definiert durch
+			\[ \bar{\chi}(a=) = \overbar{\chi(a)} \]
+			ist wieder ein Dirichlet-Charakter.
+	\end{enumerate}
+\end{lem}
+
+\begin{rem*}
+	Das Produkt von zwei Dirichlet-Charakteren modulo $m$ ist wieder ein Dirichlet-Charakter modulo $m$.\\
+	Genauer gilt
+\end{rem*}
+
+\begin{lem}\autolabel
+	Sei $m \in \N$. Dann ist die Menge aller Dirichlet-Charaktere modulo $m$, schreibe $\Ccal_m$, eine endliche abelsche Gruppe unter der Multiplikation,
+	\[ \chi_1 \cdot \chi_2(a) = \chi_1(a) \chi_2(a) \ \foralll a \in \Z. \]
+\end{lem}
+
+\begin{frage*}
+	Wie viele verschiedene Dirichlet-Charaktere gibt es?
+\end{frage*}
+
+\begin{lem}\autolabel
+	Seien $m,d \in \N$ mit $\ggt(m,d)=1$ und $d \not\equiv1 \bmod m$. Dann gibt es einen Dirichlet-Charakter $\chi$ modulo $m$ mit $\chi(d) \neq 1$.
+\end{lem}
+
+\begin{exmp*}
+	$m = 5$. 2 ist eine Primitivwurzel modulo 5. Die Funktion
+	\[ \chi(a) = \begin{cases}
+		0 &\ggt(a,5)>1\\
+		e^{2\pi i \frac{c}{4}} &\ggt(a,5)=1,\ a \equiv 2^c \bmod 5
+	\end{cases} \]
+	ist ein Dirichlet-Charakter modulo 5. Explizit gilt $\chi(1)=1, \chi(2)=i,\chi(3)=-i,\chi(4)=-1$ und damit
+	\[ \chi(1)+\chi(2)+\chi(3)+\chi(4)=0. \]
+\end{exmp*}
+
+\begin{frage*}
+	Gilt dies auch allgemein?
+\end{frage*}
+
+\begin{thm}\autolabel
+	Sei $m \in \N$ und $\Ccal_m$ die Gruppe der Dirichlet-Charaktere modulo $m$, $\chi \in \Ccal_m$ und $a \in \Z$ mit $\ggt(a,m)=1$. Dann gilt
+	\begin{enumerate}[label={\roman*})]
+		\item \[ \sum_{\chi \in \Ccal_m} \chi(a) = \begin{cases}
+				|\Ccal_m| &a= \equiv 1 \bmod m\\
+				0 &a \not\equiv 1 \bmod m
+			\end{cases} \]
+		\item \[ \sum_{\substack{1 \leq a \leq m\\\ggt(a,m)=1}} \chi(a) = \begin{cases}
+				\varphi(m) &\chi = \chi_0\\
+				0 &\chi \neq \chi_0
+			\end{cases} \]
+		\item \[ |\Ccal_m| = \varphi(m). \]
+	\end{enumerate}
+\end{thm}
