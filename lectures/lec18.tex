@@ -1,5 +1,7 @@
 \chapter{Charaktere und Gauß-Summen}
 \lecture{11.06.2021}
+\section{Charaktere}
+
 \begin{idee*}
 	Wir wollen für eine endliche abelsche Gruppe $G$ Gruppenhomomorphismen
 	\[ \chi: G \to \C^* \]
@@ -99,7 +101,7 @@ Wir wollen nun erste Eigenschaften von Dirichlet-Charakteren betrachten.
 	Sei $m \in \N$ und $\Ccal_m$ die Gruppe der Dirichlet-Charaktere modulo $m$, $\chi \in \Ccal_m$ und $a \in \Z$ mit $\ggt(a,m)=1$. Dann gilt
 	\begin{enumerate}[label={\roman*})]
 		\item \[ \sum_{\chi \in \Ccal_m} \chi(a) = \begin{cases}
-				|\Ccal_m| &a= \equiv 1 \bmod m\\
+				|\Ccal_m| &a \equiv 1 \bmod m\\
 				0 &a \not\equiv 1 \bmod m
 			\end{cases} \]
 		\item \[ \sum_{\substack{1 \leq a \leq m\\\ggt(a,m)=1}} \chi(a) = \begin{cases}

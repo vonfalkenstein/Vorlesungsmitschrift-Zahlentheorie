@@ -1,0 +1,124 @@
+\section{Gauß-Summen}\lecture{15.06.2021}
+
+Sei $m \in \N$. Bisher haben wir Charaktere
+\[ \tilde{\chi}: (\Z/m\Z)^* \to \C^* \]
+studiert, die multiplikativen Charaktere modulo $m$. Wir betrachten nun die additive Gruppe $\Z/m\Z$ und  Gruppenhomomorphismen
+\[ (\Z/m\Z),+) \to (\C^*,\cdot). \]
+
+\begin{frage*}
+	Welche Form haben "additive Charaktere" modulo $m$?
+\end{frage*}
+
+Sei 
+\[ f: (\Z/m\Z),+) \to (\C^*,\cdot) \]
+ein Gruppenhomomorphismus. Dann gilt
+\[ f(0) = 1 \]
+\[ f(1)^m = f(m) = f(0) = 1, \]
+d.h. $f(1)$ ist eine $m$-te Einheitswurzel. Es gibt also $a \in \Z$ mit
+\[ f(1) = e^{2\pi i \frac{a}{m}}. \]
+Dann gilt allgemein für $c \in \Z/m\Z$
+\[ f(c) = f(1)^c = e^{2\pi i \frac{ac}{m}} \]
+
+\begin{notat*}
+	Für $x \in \R$ schreiben wir im Folgenden
+	\[ e(x) = e^{2\pi i x}. \]
+\end{notat*}
+
+\begin{frage*}
+	Wie sehen die Interaktionen zwischen additiven und multiplikativen Charakteren modulo $m$ aus?
+\end{frage*}
+
+Wir betrachten nun den Fall, in dem $m=p$ prim ist.
+
+\begin{defn*}[Gauß-Summe]\index{Gauß-Summe}
+	Sei $p$ eine Primzahl und $\chi$ ein Dirichlet-Charakter modulo $p$ mit $\chi \neq \chi_0$. Für $a \in \Z$ definieren wir die \emph{Gauß-Summen}
+	\[ g_a(\chi) = \sum_{t=0}^{p-1} \chi(t) e\left( \frac{at}{p} \right), \]
+	\[ g_a(\chi_0) = \sum_{t=0}^{p-1} e\left( \frac{at}{p} \right). \]
+\end{defn*}
+
+\begin{notat*}
+	Für $a=1$ schreibe auch $g_1(\chi) = g(\chi)$.
+\end{notat*}
+
+\begin{rem*}
+	\begin{enumerate}[label={\roman*})]
+		\item Ist $a \equiv b \bmod p$, so gilt
+			\[ g_a(\chi) = g_b(\chi) \]
+			für alle Dirichlet-Charaktere modulo $p$.
+		\item Für den Hauptcharakter $\chi_0$ berechnen wir
+			\begin{align*}
+				g_a(\chi_0) &= \sum_{t=0}^{p-1} e\left( \frac{at}{p} \right)\\
+				&= \begin{cases}
+					p\quad &p \mid a\\
+					0 &p \nmid a
+				\end{cases}
+			\end{align*}
+	\end{enumerate}
+\end{rem*}
+
+\begin{frage*}
+	Wie funktioniert die Berechnung von Gauß-Summen für allgemeine Charaktere $\chi$?
+\end{frage*}
+
+Zur Beantwortung dieser Frage betrachten wir zunächst die Reduktion auf den Fall $a=1$, d.h. $g_1(\chi) = g(\chi)$.
+
+\begin{lem}\autolabel
+	Sei $p$ prim, $a \in \Z$ und $\chi$ ein Dirichlet-Charakter modulo $p$ mit $\chi \neq \chi_0$. Falls $p \nmid a$ sei $a^* \in \Z$ mit $aa^* \equiv 1 \bmod p$. Dann gilt
+	\[ g_a(\chi) = \begin{cases}
+		0 &p \mid a\\
+		\chi(a^*)g(\chi) &p \nmid a
+	\end{cases} \]
+\end{lem}
+
+\begin{frage*}
+	Welche Größenordnung könnte man für $g(\chi)$ für große Primzahlen $p$ erwarten?
+\end{frage*}
+
+\begin{idee*}
+	Falls die Summanden $\chi(t) e\left( \frac{t}{p} \right)$ zufällig auf dem Einheitskreis verteilt wären, so könnten wir für ein großes $p$
+	\[ |g(\chi)| \sim \sqrt{p} \]
+	erwarten (square root cancellation).
+\end{idee*}
+
+\begin{thm}\autolabel
+	Sei $p$ prim und $\chi \neq \chi_0$ ein Dirichlet-Charakter modulo $p$. Dann gilt
+	\[ |g(\chi)| = \sqrt{p}. \]
+\end{thm}
+
+Im Spezialfall, dass $\chi = \left(\frac{\cdot}{p}\right)$ das Legendre-Symbol ist, können wir noch etwas mehr sagen:
+
+\begin{thm}\autolabel
+	Sei $p>2$ prim und $\left(\frac{\cdot}{p}\right)$ das Legendre-Symbol. Dann gilt
+	\[ g(\chi)^2 = (-1)^{\frac{p-1}{2}}p. \]
+\end{thm}
+
+Eine erste Anwendung von Gauß-Summen ist der Beweis des quadratischen Reziprozitätsgesetzes. eine weitere ist die
+
+\subsection{Arithmetik in Kreisteilungskörpern}
+
+Sei $p$ eine Primzahl und $\zeta = e\left( \frac{1}{p} \right) = e^{\frac{2\pi i}{p}}$. Dann ist
+\[ \Q(\zeta) = \big\{ a_0 + a_1\zeta + \dots + a_{p-2}\zeta^{p-2} \mid a_0,a_1,\dotsc,a_{p-2} \in \Q \big\} \subset \C \]
+ein Körper und
+\[ \Z[\zeta] = \big\{ a_0 + a_1\zeta + \dots + a_{p-2}\zeta^{p-2} \mid a_0,a_1,\dotsc,a_{p-2} \in \Z \big\} \]
+ein Teilring.
+
+\begin{rem*}
+	Es gilt
+	\[ 1 + \zeta + \dots + \zeta^{p-1} = \sum_{t=0}^{p-1} e\left( \frac{t}{p} \right) = 0. \]
+	Also können wir $\zeta^{p-1}$ schreiben als
+	\[ \zeta^{p-1} = -1 - \zeta - \zeta^2 - \dots - \zeta^{p-2} \in \Z[\zeta]. \]
+\end{rem*}
+
+\begin{notat*}
+	Sind $\alpha,\beta \in \Z[\zeta]$ und $q \in \Z$ eine weitere Primzahl, so schreiben wir 
+	\[ \alpha \equiv \beta \bmod q \]
+	falls $\alpha-\beta = q\gamma$ mit $\gamma \in \Z[\zeta]$ ist.
+\end{notat*}
+
+\begin{exmp*}
+	$p=5,\ q = 7,\ 7 + \zeta + 8\zeta^2 \equiv \zeta + \zeta^2 \bmod 7$
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Sei $q \neq p$ eine weitere Primzahl und $m,n \in \Z$ mit $m \equiv n \bmod q$ im Ring $\Z[\zeta]$. Dann gilt bereits $m-n = q \cdot c$ mit einem $c \in \Z$.
+\end{lem}
