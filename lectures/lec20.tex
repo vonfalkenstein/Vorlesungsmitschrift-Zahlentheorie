@@ -1,0 +1,98 @@
+\section{Zählen von Lösungen von Kongruenzgleichungen}\lecture{18.06.2021}
+
+\begin{frage*}
+	Sei $p$ eine Primzahl und betrachte die Gleichung
+	\[ x^n + y^n \equiv 1 \bmod p. \]
+	Wie viele Lösungen hat diese Kongruenz?
+\end{frage*}
+
+Wir betrachten zunächst den Fall $n = 2$. Sei $N(p)$ die Zahl der Lösungen der Kongruenz 
+\[ x^2+y^2 \equiv 1 \bmod p. \]
+
+\begin{idee*}
+	Schreibe $N(p)$ als Summe von Charaktersummen.
+\end{idee*}
+
+Sei $p>2$ und $\left(\frac{\cdot}{p}\right)$ das Legendre-Symbol modulo $p$. Ist $a \in \Z$, so gilt
+\[ 1 + \left(\frac{a}{p}\right) = \left| \{ y \bmod p \mid y^2 \equiv a \bmod p\} \right|. \]
+Schreibe $N(p)$ als
+\begin{align*}
+	N(p) &= \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left( 1 + \left(\frac{a}{p}\right) \right) \left( 1 + \left(\frac{b}{p}\right) \right)\\
+	&= \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left( 1 + \left(\frac{a}{p}\right) \left(\frac{b}{p}\right) \left(\frac{ab}{p}\right) \right)\\
+	&= p + \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left(\frac{a}{p}\right) + \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left(\frac{b}{p}\right) + \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left(\frac{a}{p}\right)\left(\frac{b}{p}\right)
+\end{align*}
+Es ist
+\begin{align*}
+	\sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left(\frac{a}{p}\right) &= \sum_{0 \leq a \leq p-1} \left(\frac{a}{p}\right)\\
+	&= g_0 \left( \left(\frac{\cdot}{p}\right) \right)\\
+	&\overset{\ref{12.5}}{=} 0 
+\end{align*}
+Genauso gilt
+\[ \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left(\frac{b}{p}\right) = 0 \]
+Es folgt
+\[ N(p) = p + \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \left(\frac{a}{p}\right)\left(\frac{b}{p}\right) \]
+
+\begin{defn*}[Jacobi-Summe]\index{Jacobi-Summe}
+	Sei $p$ prim und seien $\chi,\psi$ Dirichlet-Charaktere modulo $p$, ungleich dem Hauptcharakter. Dann definieren wir die Jacobi-Summe $J(\chi,\psi)$ durch
+	\[ J(\chi,\psi) = \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} \chi(a) \psi(b). \]
+	Für den Hauptcharakter $\chi_0$ setzen wir
+	\[ J(\chi_0,\chi) = J(\chi,\chi_0) = 0 \]
+	und $J(\chi_0,\chi_0) = p$.
+\end{defn*}
+
+\begin{thm}\autolabel
+	Sei $p$ prim und $\chi,\psi$ Dirichlet-Charaktere modulo $p$, ungleich dem Hauptcharakter $\chi_0$. Dann gilt
+	\begin{enumerate}[label={\roman*})]
+		\item $J(\chi,\bar{\chi}) = -\chi(-1)$
+		\item Ist $\chi\psi \neq \chi_0$, so ist
+			\[ J(\chi,\psi) = \frac{g(\chi)g(\psi)}{g(\chi\psi)} \]
+			und $|J(\chi,\psi)| = \sqrt{p}$.
+	\end{enumerate}
+\end{thm}
+
+Dies wollen wir nun auf die Zählfunktion anwenden, also auf
+\[ N(p) = |\{0 \leq x,y \leq p-1 \mid x^2+y^2 \equiv 1 \bmod p\} \]
+Wir haben bereits berechnet, dass für $\chi = \left(\frac{\cdot}{p}\right)$
+\[ N(p) = p + J(\chi,\chi) \]
+gilt. Nach Satz \ref{12.9} gilt wegen $\chi = \bar{\chi}$ $N(p) = p-\left(\frac{-1}{p}\right)$, also
+\[ N(p) = \begin{cases}
+	p-1 &p \equiv 1 \bmod 4\\
+	p+2 &p \equiv 3 \bmod 4
+\end{cases} \]
+
+Als eine weitere Anwendung können wir die Zählfunktion
+\[ N_3(p) = |\{0 \leq x,y \leq p-1 \mid x^3+y^3 \equiv 1 \bmod p\} \]
+für $p>3$ prim studieren.\\
+\emph{Fall 1:} $p \equiv 2 \bmod 3$. Dann ist
+\[ |(\Z/p\Z)^*| = p-1 \equiv 1 \bmod 3 \]
+und die Abbildung
+\[ \alpha: (\Z/p\Z)^* \to (\Z/p\Z)^*,\quad x \mapsto x^3 \]
+bijektiv.\\
+\emph{Fall 2:} $p \equiv 1 \bmod 3$. Sei $g$ eine Primitivwurzel modulo $p$ und definieren den Dirichlet-Charakter $\chi$ modulo $p$ durch
+\[ \chi(a) = \begin{cases}
+	0 &p \mid a\\
+	e\left( \frac{c}{3} \right) &a \equiv g^c \bmod p
+\end{cases} \]
+Dann gilt für $a \in \Z$
+\[ |\{0 \leq x \leq p-1 \mid x^3 \equiv a \bmod p\}| = 1 + \chi(a) + \chi^2(a). \]
+Damit berechnen wir
+\begin{align*}
+	N_3(p) &= \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} |\{ 0 \leq x \leq p-1 \mid x^3 \equiv a \bmod p \}| \cdot |\{ 0 \leq x \leq p-1 \mid y^3 \equiv a \bmod p \}|\\
+	&= \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} (1 + \chi(a) + \chi^2(a))(1 + \chi(b) + \chi^2(b))\\
+	&= \sum_{\substack{0 \leq a, b \leq p-1\\a + b \equiv 1 \bmod p}} (1 + \chi(a) + \chi^2(a) + \chi(b) + \chi(a)\chi(b) + \dots + \chi^2(a)\chi^2(b))\\
+	&= p + J(\chi,\chi) + J(\chi^2,\chi) + J(\chi,\chi^2) + J(\chi^2,\chi^2)\\
+	&= p - \chi^2(-1) - \chi(-1) + J(\chi,\chi) + J(\chi^2,\chi^)
+\end{align*}
+
+\begin{rem*}
+	$-1 \equiv g^{\frac{p-1}{2}} \bmod p$, also $\chi(-1) = e\left( \frac{p-1}{6} \right) = 1$, da $6 \mid p-1$ und ebenso $\chi^2(-1) = 1$.
+\end{rem*}
+
+Insgesamt erhalten wir
+\[ N_3(p) = p-2 + J(\chi,\chi) + J(\chi^2,\chi^2). \]
+Nach Satz \ref{12.9} gilt
+\[ |N_3(p) - (p-2)| \leq 2 \sqrt{p}. \]
+
+\begin{rem*}
+	Für $p$ hinreichend groß, genauer $p-2 > 2\sqrt{p},$ folgt $N_3 \neq 0$ und damit hat die Gleichung $x^3+y^3 \equiv 1 \bmod p$ eine Lösung.
+\end{rem*}

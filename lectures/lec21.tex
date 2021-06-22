@@ -1,0 +1,117 @@
+\chapter{Multiplikative Funktionen}\lecture{22.06.2021}
+
+\begin{exmp*}
+	Die Teilerfunktion
+	\[ d(n) = \sum_{d \mid n} 1 \]
+	hat die Eigenschaft
+	\[ d(nm) = d(n)d(m) \quad \foralll m,n: \ggt(m,n)=1. \]
+\end{exmp*}
+
+\begin{defn*}[arithmetische Funktion]\index{arithmetische Funktion}
+	\begin{itemize}
+		\item []
+		\item Wir nennen eine Abbildung
+			\[ f: \N \to \C \]
+			eine \emph{arithmetische Funktion}.
+		\item Eine arithmetische Funktion $f: \N \to \C$ heißt \emph{multiplikativ}, wenn
+			\[ f(nm) = f(n)f(m) \quad \foralll m,n \in \N: \ggt(m,n)=1. \]
+		\item Eine arithmetische Funktion $f: \N \to \C$ heißt \emph{vollständig multiplikativ}, wenn
+			\[ f(nm) = f(n)f(m) \quad \foralll m,n \in \N. \] 
+	\end{itemize}
+\end{defn*}
+
+\begin{rem*}
+	Ist $f \neq 0$ eine multiplikative Funktion, so gilt $f(1)=1$.
+\end{rem*}
+
+\begin{exmp*}
+	\begin{enumerate}[label={\roman*})]
+		\item[]
+		\item Die Teilerfunktion ist multiplikativ, aber nicht vollständig multiplikativ.
+		\item Die Funktion \( \sigma(n) = \sum_{d \mid n} d \) ist multiplikativ.
+		\item Definiere \[ \mathds{1}: \N \to \C \quad n \mapsto 1. \] $\mathds{1}$ ist vollständig multiplikativ.
+		\item \[ \epsilon: \N \to \C,\quad n \mapsto \begin{cases}
+			1 &n=1\\0 &n\neq1
+		\end{cases} \] ist vollständig multiplikativ.
+		\item Für $k \in \N$ sind die Funktionen $n \mapsto n^k$ vollständig multiplikativ. Für $k=1$ ist das einfach $\id: N \to \C,\ n \mapsto n$.
+		\item Die Eulersche $\varphi$-Funktion ist multiplikativ.
+	\end{enumerate}
+\end{exmp*}
+
+\begin{obs*}
+	Die Funktion
+	\[ \sigma(n) = \sum_{d \mid n} d = \sum_{d \mid n} d \cdot \mathds{1} \left(\frac{n}{d}\right) \]
+	ist "zusammengesetzt" aus den Funktionen $\id$ und $\mathds{1}$.
+\end{obs*}
+
+\begin{defn*}[Faltung]\index{arithmetische Funktion!Faltung}
+	Seien $f,g: \N \to \C$ arithmetische Funktionen. Wir definieren die \emph{Faltung} von $f$ und $g$ durch
+	\[ f * g(n) = \sum_{d \mid n} f(d) g(\left(\frac{n}{d}\right)). \]
+\end{defn*}
+
+\begin{exmp*}
+	$\sigma = \id * \mathds{1}$\\$d = \mathds{1} * \mathds{1}$
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Seien $f,g,h: \N\to \C$ arithmetische Funktionen. Dann gilt
+	\begin{enumerate}[label={\roman*})]
+		\item $f * g = g * f$
+		\item $f*(g*h) = (f*g)*h$
+		\item $\epsilon * f = f * \epsilon = f$
+		\item Sind $f$ und $g$ multiplikativ, so ist auch $f*g$ multiplikativ.
+	\end{enumerate}
+\end{lem}
+
+\begin{rem*}
+	Arithmetische Funktionen bilden unter punktweiser Addition und der Faltung $*$ als Multiplikation einen kommutativen Ring.
+\end{rem*}
+
+\begin{frage*}
+	Bestimme das "Inverse zu $\mathds{1}$ unter der Faltung", d.h. finde eine arithmetische Funktion $g: \N \to \C$ mit $1 * g = \epsilon$.
+\end{frage*}
+
+$\to$ Berechne $\mathds{1} * g(1) = 1 \implies g(1) = 1$\\
+Für eine Primzahl $p$ ist
+\begin{align*}
+	g(1) + g(p) = 1 * g(p) = \epsilon(p) = 0 \implies g(p) = -1
+\end{align*}
+Für Primzahlpotenzen $p^k,\ k \in \N$, gilt
+\[ g(1) + g(p) + \dots + g(p^k) = \mathds{1} * g(p^k) = 0. \]
+Induktiv über $k$ folgt $g(p^k)=0$ für $p$ prim, $k\geq 2$.
+
+\begin{defn*}[Möbius-Funktion]\index{Möbius-Funktion}
+	Wir definieren die \emph{Möbius-Funktion}
+	\[ \mu: \N \to \{0,+1,-1\} \]
+	durch
+	\[ \mu(n) = \begin{cases}
+		1 &n=1\\
+		(-1)^r &n = p_1 \dotsm p_r\\
+		0 &\text{sonst}
+	\end{cases} \]
+\end{defn*}
+
+\begin{lem}\autolabel
+	Die Möbius-Funktion $\mu$ ist multiplikativ und es gilt\[ \mu * \mathds{1} = \epsilon. \]
+\end{lem}
+
+\begin{cor}\autolabel
+	Seien $F,f: \N \to \C$ arithmetische Funktionen mit $F=f*\mathds{1}$, d.h.
+	\[ F(n) = \sum_{d \mid n} f(d). \]
+	Dann gilt
+	\[ f(n) = \sum_{d \mid n} F(d) \mu \left(\frac{n}{d}\right). \]
+\end{cor}
+
+\begin{rem*}
+	Ist $F=f*\mathds{1}$ und $F$ multiplikativ, so folgt aus Korollar \ref{13.3}, dass auch $f$ multiplikativ ist.
+\end{rem*}
+
+\begin{lem}\autolabel
+	Sei $\varphi$ die Eulersche $\varphi$-Funktion. Dann gilt
+	\[ \varphi * \mathds{1} = \id. \]
+\end{lem}
+
+\begin{cor}\autolabel
+	Die Eulersche $\varphi$-Funktion ist multiplikativ und es gilt
+	\[ \varphi(n) = \sum_{d \mid n} d \mu \left(\frac{n}{d}\right). \]
+\end{cor}
