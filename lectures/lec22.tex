@@ -1,0 +1,77 @@
+\section{Mittelwerte multiplikativer Funktionen}\lecture{25.06.2021}
+
+\begin{frage*}
+	Wie sieht das Wachstum der Teilerfunktion $d(n)$ für große Werte von $n$ aus?\\
+	Ist $p$ prim, so gilt immer $d(p)=2$.
+\end{frage*}
+
+\begin{thm}\autolabel
+	Sei $x \in \R_{> 1}$ und $\gamma = \lim_{N \to \infty} \left( \sum_{n=1}^N \frac{1}{n} - \log N \right)$. Dann gilt
+	\[ \sum_{n\leq x} d(n) = x \log x + (2\gamma - 1)x + \Ocal \left( x^{\frac{1}{2}} \right) \]
+\end{thm}
+
+\begin{rem*}
+	\begin{enumerate}[label={\roman*})]
+		\item Sind $f: \R_{>0} \to \C$ und $g: \R_{>0} \to \R_{>0}$, so schreibe
+			\begin{itemize}
+				\item $f(x) = \Ocal(g(x))$, falls es eine Konstante $C \in \R_{>0}$ gibt und $x_0 \in \R_{>0}$, sodass
+					\[ |f(x)| \leq C g(x) \ \foralll x \geq x_0 \]
+				\item $f(x) = o(g(x))$, falls 
+					\[ \left| \frac{f(x)}{g(x)} \right| \underset{x \to \infty}{\longrightarrow} 0 \]
+			\end{itemize}
+		\item \[ \sum_{n \leq N} \frac{1}{n} = \int_{1}^{N} \frac{1}{t} \ dt + \gamma + \Ocal \left( \frac{1}{N} \right) \]
+	\end{enumerate}
+\end{rem*}
+
+\begin{frage*}
+	Was ist das mittlere Wachstum der Eulerschen $\varphi$-Funktion?
+\end{frage*}
+
+\begin{idee*}
+	Schreibe $\varphi$ als Faltung
+	\[ \varphi(n) = \sum_{d \mid n} \mu(d) \cdot \frac{n}{d} \]
+	und berechne für $x \in \R_{> 1}$
+	\begin{align*}
+		\sum_{n\leq x} \varphi(n) &= \sum_{n\leq x} \sum_{d \mid n} \mu(d) \frac{n}{d}\\
+			&= \sum_{d \leq x} \mu(d) \sum_{\substack{n \leq x\\d \mid n}} \frac{n}{d}\\
+			&= \sum_{d \leq x} \mu(d) \sum_{m \leq \frac{x}{d}} m\\
+			&= \sum_{d \leq x} \mu(d) \left( \frac{1}{2} \left\lfloor \frac{x}{d} \right\rfloor \left( \left\lfloor \frac{x}{d} + 1 \right\rfloor \right) \right)\\
+			&= \frac{1}{2} \sum_{d \leq x} \mu(d) \left( \frac{x}{d} + \Ocal(1) \right) \left( \frac{x}{d} + \Ocal(1) \right)\\
+			&= \frac{1}{2} \sum_{d \leq x} \mu(d) \frac{x^2}{d^2} + \Ocal \left( \sum_{d \leq x} |\mu(d)| \frac{x}{d} \right)\\
+			&= \frac{1}{2} \sum_{d \leq x} \mu(d) \frac{x^2}{d^2} + \Ocal (x \log x)\\
+			&= \frac{1}{2} x^2 \sum_{d \leq x} \frac{\mu(d)}{d^2} + \Ocal(x \log x)
+	\end{align*}
+\end{idee*}
+
+\begin{rem*}
+	Da $|\mu(d)| \leq 1 \ \foralll d \in \N$ ist die Reihe \( \sum_{d=1}^\infty \frac{\mu(d)}{d^2} \) absolut konvergent und es gilt für $x>1$
+	\begin{align*}
+		\sum_{d \leq x} \frac{\mu(d)}{d^2} &= \sum_{d=1}^\infty \frac{\mu(d)}{d^2} + \Ocal \left( \sum_{d = \lfloor x \rfloor + 1}^\infty \frac{1}{d^2} \right)\\
+		&= \sum_{d=1}^\infty \frac{\mu(d)}{d^2} + \Ocal \left( \frac{1}{x} \right)
+	\end{align*}
+\end{rem*}
+
+Wir erhalten also
+\begin{align*}
+	\sum_{n \leq x} \varphi(n) &= \frac{1}{2} x^2 \left( \sum_{d=1}^\infty \frac{\mu(d)}{d^2} + \Ocal \left( \frac{1}{x} \right) \right) + \Ocal (x\log x)\\
+	&= \frac{1}{2} x^2 \sum_{d=1}^\infty \frac{\mu(d)}{d^2} + (x\log x)
+\end{align*}
+
+\begin{defn*}[Riemannsche $\zeta$-Funktion] \index{Riemannsche $\zeta$-Funktion}
+	Für $s \in \C$ mit $\Re(s) > 1$ definieren wir die Riemannsche $\zeta$-Funktion durch
+	\[ \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} \]
+\end{defn*}
+
+\begin{lem}\autolabel
+	Es gilt
+	\[ \sum_{d=1}^\infty \frac{\mu(d)}{d^2} = \frac{1}{\zeta(2)} = \frac{6}{\pi^2} \]
+\end{lem}
+
+\begin{thm}\autolabel
+	Für $x>1$ ist
+	\[ \sum_{n \leq x} \varphi(n) = \frac{3}{\pi^2} x^2 + \Ocal(x\log x) \]
+\end{thm}
+
+\begin{cor*}
+	Die Wahrscheinlichkeit, dass zwei positive ganze Zahlen teilerfremd sind, beträgt $\frac{6}{\pi^2}$.
+\end{cor*}
