@@ -1,0 +1,115 @@
+\chapter{Quadratische Formen}\lecture{29.06.2021}
+
+\begin{frage*}
+	Sei $Q \in \Z[x1, \dotsc, x_s]$ ein homogenes quadratisches Polynom und $k \in \Z$. Wann hat das Darstellungsproblem
+	\[ Q(x_1, \dotsc, x_s) = k \]
+	eine ganzzahlige Lösung?
+\end{frage*}
+
+\begin{exmp*}
+	$x_1^2 + x_2^2 = k$ hat genau dann eine ganzzahlige Lösung, wenn $k \geq 0$ und für jede Primzahl $p \mid k$ mit $p \equiv 3 \bmod 4$ gilt, dass $p$ die Zahl $k$ zu einer gerade Potenz teilt. Welche $k \in \Z$ lassen sich nun aber als $k = x_1^2 + 2x_2^2$ schreiben?
+\end{exmp*}
+
+\section{Grundbegriffe und Äquivalenz quadratischer Formen}
+
+\begin{defn*}[Quadratische Form] \index{Quadratische Form}
+	Eine quadratische Form der Dimension $n$ (über $Z$) ist eine Abbildung $F: \Z^n \to \Z$, wobei
+	\[ F(x_1,\dotsc,x_n) = \sum_{1 \leq i, j \leq n} a_{ij} x_i x_j \]
+	mit $a_{ij} \in \Z$ und $a_{ij} = a_{ji}$.
+\end{defn*}
+
+\begin{rem*}
+	Für eine quadratische Form $F(x_1, \dotsc, x_n) = \sum_{1 \leq i, j \leq n} a_{ij} x_i x_j$ definieren wir die \emph{assoziierte Matrix}
+	\[ A = (a_{ij})_{1 \leq i,j \leq n}. \]
+	Schreibe $x = (x_1, \dotsc, x_n)$, so gilt
+	\[ F(x) = x A x^t. \]
+\end{rem*}
+
+\begin{defn*}[Determinante]\index{Quadratische Form!Index}
+	In obiger Notation definieren wir die Determinante $D(F)$ von $F$ durch
+	\[ D(F) := \det(A). \]
+\end{defn*}
+
+\begin{exmp*}
+	$F(x_1,x_2,x_3) = 2x_1x_2 + x_3^2$ ist eine quadratische Form der Dimension mit \[ A = \begin{pmatrix}
+		0&1&0\\1&0&0\\0&0&1
+	\end{pmatrix} \]
+	und $D(A) = -1$.\\
+	$\to F(x_1,x_2,x_3)$ nimmt positive und negative Werte für $(x_1,x_2,x_3) \in \Z^3$ an.
+\end{exmp*}
+
+\begin{defn*}[Definite quadratische Form]\index{Quadratische Form!definite}
+	Wir nennen eine quadratische Form $F(x_1,\dotsc,x_n)$ \emph{positiv} (bzw. \emph{negativ}) \emph{definit}, falls
+	\[ F(x_1,\dotsc,x_n) > 0 \ (\text{bzw. }<0) \]
+	für alle $(x_1,\dotsc,x_n) \in \Z^n \setminus \{0\}$. Ansonsten nennen wir $F$ \emph{indefinit}.
+\end{defn*}
+
+\begin{exmp*}
+	$x_1^2 + x_2^2 + x_3^2$ ist positiv definit und $(x_1-x_2)^2$ indefinit.
+\end{exmp*}
+
+\begin{rem*}
+	Ist $F(x_1,\dotsc,x_n)$ indefinit und $D(F) \neq 0$, so nimmt $F$ positive und negative Werte an.
+\end{rem*}
+
+\begin{defn*}
+	Sei $k \in \Z$. Wir sagen, dass eine quadratische Form $F(x_1,\dotsc,x_n)$ die Zahl $k$ \emph{darstellt}, falls es $(x_1,\dotsc,x_n) \in \Z^n$ gibt mit $F(x_1,\dotsc,x_n) = k$.
+\end{defn*}
+
+\begin{exmp*}
+	Die quadratische Form $x_1^2+x_2^2$ stellt alle Primzahlen $p \equiv 1 \bmod 4$ dar.
+\end{exmp*}
+
+\begin{idee*}
+	Betrachte die Variablensubstitution
+	\[ x_1 \mapsto y_1 + y_2, \quad x_2 \mapsto y_2 \]
+	und die quadratische Form
+	\begin{align*}
+		G(y_1,y_2) &= (y_1+y_2)^2 + y_2^2\\
+		&= y_1^2 + 2y_1y_2 + 2y_2^2
+	\end{align*}
+	Dann stellen $F$ und $G$ die selben ganzen Zahlen $k$ dar.\\
+	Wir verwenden hier, dass die Transformationsmatrix $\begin{pmatrix}
+		1&1\\0&1
+	\end{pmatrix}$ invertierbar ist in $M_{2 \times 2}(\Z)$.
+\end{idee*}
+
+\begin{rem*}
+	Ist $A \in M_{n \times n}(\Z)$ eine $n \times n$-Matrix mit ganzzahligen Einträgen und $\det(A) \neq 0$, so gilt $A^{-1} \in M_{n \times n}(\Z)$ genau dann, wenn $\det(A) = \pm 1$.
+\end{rem*}
+
+\begin{defn*}[Äquivalente Formen]\index{quadratische Form!Äquivalenz}
+	Seien $F(x_1,\dotsc,x_n)$ und $G(x_1,\dotsc,x_n)$ quadratische Formen mit assoziierten Matrizen $A$ bzw. $B$. Wir sagen, dass $F$ und $G$ \emph{äquivalent} sind, schreibe $F \sim G$, falls es eine Matrix $T \in M_{n \times n}(\Z)$ gibt mit $\det(T) = 1$ und $B = TAT^t$.
+\end{defn*}
+
+\begin{lem}\autolabel
+	Sei $n \in \N$. Die Relation $\sim$ auf der Menge quadratischer Formen der Dimension $n$ ist eine Äquivalenzrelation.
+\end{lem}
+
+\begin{lem}\autolabel
+	Seien $F,G$ quadratische Formen der Dimension $n$ mit $F \sim G$. Dann gilt $D(F) = D(G)$ und $k \in \Z$ wird genau dann durch $F$ dargestellt, wenn $k$ durch $G$ dargestellt wird.
+\end{lem}
+
+\begin{frage*}
+	Betrachte eine feste Dimension $n \in \N$ und eine Determinante $D \in \Z \setminus \{0\}$. Wie finden wir eine vollständige Liste von Äquivalenzklassen von quadratischen Formen der Dimension $n$ und Determinante $D$.
+\end{frage*}
+
+\begin{thm}\autolabel
+	Sei $n \in \N$ und $D \in \Z\setminus\{0\}$. Dann gibt es nur endlich viele Äquivalenzklassen quadratischer Formen der Dimension $n$ und Determinante $D$.
+\end{thm}
+
+\begin{lem}\autolabel
+	Sei $n \geq 2$ und $a_1,\dotsc,a_n \in \Z$ mit $\ggt(a_1,\dotsc,a_n)=1$. Dann gibt es eine Matrix $T \in M_{n \times n}(\Z)$ mit $\det(T)  =1$ und so, dass $T$ den Vektor $(a_1,\dotsc,a_n)^t$ als erste Spalte besitzt.
+\end{lem}
+
+\section{Kleine Werte von quadratischen Formen}
+
+\begin{thm}\autolabel
+	Sei $F$ eine quadratische Form der Dimension $n$ und Determinante $D \neq 0$, nicht negativ definit. Dann gibt es $a_1, \dotsc, a_n \in \Z$ mit
+	\[ 0 < F(x_1,\dotsc,x_n) \leq \theta_n |D|^\frac{1}{n}, \]
+	wobei $\theta_n$ nur von $n$ abhängt.
+\end{thm}
+
+\begin{rem*}
+	Satz \ref{14.5} ist bis auf die Konstante $\theta_n$ optimal. Betrachte z.B. $F(x_1,\dotsc,x_n) = x_1^2 + \dotsc + cx_n^2$ mit $x \in \N$. Dann ist $F(a_1,\dotsc,a_n) \geq c \ \foralll (a_1,\dotsc,a_n) \in \Z^n \setminus \{0\}$ und $D(F) = c^n$.
+\end{rem*}
