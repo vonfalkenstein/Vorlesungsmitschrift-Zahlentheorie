@@ -1,0 +1,42 @@
+\section{Binäre quadratische Formen}\index{02.07.2021}
+
+\begin{defn*}[Binäre quadratische Form]\index{quadratische Form!binäre}\index{Diskriminante}
+	Eine \emph{binäre quadratische Form} ist eine Funktion $f: \Z^2 \to \Z$ der Form
+	\[ (x,y) \mapsto ax^2 + bxy + cy^2 \]
+	mit $a,b,c \in \Z$. Wir nennen \[ \begin{pmatrix}
+		a & \frac{b}{2} \\ \frac{b}{2} & c
+	\end{pmatrix} \] die zu $f$ \emph{assoziierte Matrix} und definieren die \emph{Diskriminante} von $f$ als
+	\[ d(f) = b^2-4ac. \]
+\end{defn*}
+
+\begin{rem*}
+	\begin{enumerate}[label={\roman*})]
+		\item Es ist $d(f) = -4 D(f)$.
+		\item Für jede binäre quadratische Form gilt $d(f) \equiv 0,1 \bmod 4$.
+	\end{enumerate}
+\end{rem*}
+
+\begin{exmp*}
+	$f(x,y) = x^2+y^2$ hat Diskriminante $d(f) = -4$.
+\end{exmp*}
+
+\begin{lem}\autolabel
+	Sei $f(x,y) = ax^2+bxy+cy^2$ eine binäre quadratische Form mit $a>0$. Dann ist $f$ genau dann positiv definit, wenn $d(f)<0$.
+\end{lem}
+
+\begin{lem}\autolabel
+	Sei $f$ eine binäre quadratische Form der Diskriminante $d(f)$. Dann ist $f$ genau dann ein Produkt von linearen Formen über $\Z$, wenn $d(f) = u^2$ für ein $u \in \Z$.
+\end{lem}
+
+\begin{frage*}
+	Betrachte eine binäre quadratische Form $f(x,y)$ der Diskriminante $d$. Wie können wir eine möglichst "einfache" binäre quadratische Form $g$ finden mit $f \sim g$, also z.B. eine Form $g$ mit möglichst kleinen Koeffizienten?
+\end{frage*}
+
+\begin{lem}\autolabel
+	Sei $f(x,y)$ eine binäre quadratische Form der Diskriminante $d \in \Z$, nicht negativ definit und $d \neq \square$. Dann gibt es eine binäre quadratische Form $g(x,y) = ax^2+bxy+cy^2$, die zu $f$ äquivalent ist und sodass gilt
+	\begin{enumerate}[label={\roman*})]
+		\item $|b| \leq |a| \leq |c|$.
+		\item Ist $d>0$, so gilt $ac < 0$ und $|a| \leq \frac{1}{2} \sqrt{d}$.
+		\item Ist $d < 0$, so gilt $c > 0$ und $0 < a \leq \sqrt{\frac{|d|}{3}}$.
+	\end{enumerate}
+\end{lem}
