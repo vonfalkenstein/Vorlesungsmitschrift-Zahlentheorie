@@ -1,0 +1,75 @@
+\lecture{06.07.2021}
+
+\begin{defn*}[primitive quadratische Form]\index{Quadratische Form!primitive}
+	Eine binäre quadratische Form $f(x,y) = ax^2+bxy+cy^2$ heißt \emph{primitiv}, falls $\ggt(a,b,c)=1$.
+\end{defn*}
+
+\begin{rem*}
+	Ist $f(x,y)=ax^2+bxy+cy^2$ primitiv, so ist jede zu $f$ äquivalente Form ebenfalls primitiv.
+\end{rem*}
+
+\begin{defn*}[Klassenzahl]\index{Quadratische Form!Klassenzahl}
+	Sei $d \in \Z\setminus\{0\}$. Wir definieren die \emph{Klassenzahl} $h(d)$ als die Zahl der primitiven Äquivalenzklassen (für $d>0$) bzw. der primitiven positiv definiten Äquivalenzklassen (für $d<0$) binärer quadratischer Formen der Diskriminante $d$.
+\end{defn*}
+
+\begin{rem*}
+	Ist $f(x,y)$ nicht primitiv und $e = \ggt(a,b,c)$, so ist $\frac{1}{e}f(x,y)$ primitiv mit $d\big(\frac{1}{e}f\big) = \frac{d(f)}{e^2}$. Die Zahl \textit{aller} Äquivalenzklassen binärer quadratischer Formen der Diskriminante $d>0$ ist gegeben durch
+	\[ \sum_{e>0} h \left( \frac{d}{e^2} \right) \]
+\end{rem*}
+
+\begin{frage*}
+	Wie berechnen wir die Klassenzahl $h(d)$ für ein gegebenes $d \in \Z \setminus \{0\}$?
+\end{frage*}
+
+\begin{thm}\autolabel
+	Jede Äquivalenzklasse von positiv definiten quadratischen Formen enthält genau einen Vertreter der Form $ax^2+bxy+cy^2$ mit
+	\begin{enumerate}[label={\roman*})]
+		\item $-a < b \leq a < c$ oder
+		\item $0 \leq a = c$.
+	\end{enumerate}
+\end{thm}
+
+\begin{exmp*}
+	Wir berechnen $h(-8)$.\\
+	Nach Lemma \ref{14.8} genügt es, binäre quadratische Formen mit $0 < a \leq \sqrt{\frac{|-8|}{3}} < 2$ zu betrachten. Also ist
+	\[ h(-8) = \left| \left\{ (a,b,c) \in \Z^3 \mid b^2-4ac=-8,\ -a < b \leq a < c \ \text{oder } 0 \leq b \leq a = c,\ a = 1 \right\} \right|. \]
+	Ist $(a,b,c)$ ein Element in dieser Menge, so folgt $b^2 \equiv 0 \bmod 2$, d.h. $2 \mid b$ und damit $b=0$. Wir folgern, dass jede positiv definite binäre quadratische Form der Diskriminante äquivalent ist zu $x^2+2y^2$ und $h(-8)=1$.
+\end{exmp*}
+
+\begin{rem*}
+	\begin{enumerate}[label={\roman*})]
+		\item Ist $d<0$, so gilt nach Satz \ref{14.9}
+			\[ h(d) = \left| \left\{ (a,b,c) \in \Z^3 \mid b^2-4ac=d,\ -a < b \leq a < c \ \text{oder } 0 \leq b \leq a = c \right\} \right|. \]
+		\item Ist $d<0$, so gilt $h(d)=1$ genau für die folgenden Diskriminanten:\\
+			\[ d=-3, -4, -7, -8, -11, -12, -16, -19, -27, -28, -43, -67, -163 \]
+	\end{enumerate}
+\end{rem*}
+
+\begin{defn*}[primitive Darstellung]\index{Quadratische Form!primitive Darstellung}
+	Sei $m \in \Z$ und $f(x,y)$ eine binäre quadratische Form. Wir sagen, dass $m$ \emph{primitiv durch $\emph{f}$ dargestellt wird}, falls es $u,v \in \Z$ gibt mit
+	\[ f(u,v) = m,\quad \ggt(u,v)=1. \]
+\end{defn*}
+
+\begin{rem*}
+	Sind $f,g$ binäre quadratische Formen mit $f\sim g$, so stellen $f$ und $g$ die selben ganzen Zahlen primitiv dar.
+\end{rem*}
+
+\begin{lem}\autolabel
+	Sei $m \in \Z$ und $f(x,y)$ eine binäre quadratische Form. Die Form $f(x,y)$ stellt $m$ genau dann primitiv dar, wenn es eine zu $f$ äquivalente Form $g(x,y)$ der Form
+	\[ g(x,y) = mx^2 + bxy + cy^2 \]
+	mit $b,c \in \Z$ gibt.
+\end{lem}
+
+\begin{lem}\autolabel
+	Sei $d \in \Z$ mit $d \equiv 0,1 \bmod 4$ und $m \in \Z$ ungerade mit $\ggt(m,d)=1$. Dann wird $m$ genau dann primitiv durch eine primitive binäre quadratische Form der Diskriminante $d$ dargestellt, wenn $d$ ein Quadrat modulo $m$ ist.
+\end{lem}
+
+Wir betrachten eine Anwendung:
+
+\begin{thm}\autolabel
+	Sei $p>2$ prim. Dann wird $p$ genau dann durch $x^2+2y^2$ dargestellt, wenn $\left( \frac{-2}{p} \right) = 1$.
+\end{thm}
+
+\begin{rem*}
+	Für $p>2$ prim gilt genau dann \( \left(\frac{-2}{p}\right) = 1 \), wenn $p \equiv 1,3 \bmod 8$.
+\end{rem*}
