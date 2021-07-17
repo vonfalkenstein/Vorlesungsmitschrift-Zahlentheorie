@@ -1,0 +1,41 @@
+\chapter{Primzahlen}\lecture{09.07.2021}
+
+Wir wissen bereits, dass es unendlich viele Primzahlen gibt. Doch wie schnell wächst die Reihe der Primzahlen an?
+
+\begin{idee*}
+	Zähle Primzahlen $\leq x$ und studiere das Verhalten für $x \to \infty$.
+\end{idee*}
+
+\begin{defn*}
+	Wir definieren für $x \in \R_{> 1}$
+	\[ \prod(x) := |\{p \ \text{prim},\ p \leq x\}|. \]
+\end{defn*}
+
+\begin{conj*}[Gauß]
+	\[ \prod(x) \sim (i \mid x) = \int_{0}^{x} \frac{dt}{\log t} \sim \frac{x}{\log x} \]
+\end{conj*}
+
+\begin{thm}\autolabel
+	Sei $x \geq 2$. Dann ist \[ \sum_{p \leq x} > \log \log x - \frac{1}{2}. \]
+\end{thm}
+
+\begin{thm}\autolabel
+	Sei $x \geq 2$. Dann gilt \[ \sum_{p \leq x} \frac{\log p}{p} = \log x + \Ocal(1). \]
+	Sei außerdem $\theta(x) := \sum_{p \leq x} \log p$. Dann gibt es Konstanten $c_1 > c_2 > 0$, sodass für $x > 2$ gilt
+	\[ c_2 x < \theta(x) < c_1 x. \]
+\end{thm}
+
+\begin{cor}\autolabel
+	Es gibt Konstanten $c_3 > c_4 > 0$, sodass für $x > 2$ gilt
+	\[ c_4 \frac{x}{\log x} < \prod(x) < c_3 \frac{x}{\log x}. \]
+\end{cor}
+
+\begin{lem}[Stirlingsche Formel]\autolabel
+	\[ \log n! = n \log n - n + \Ocal(\log n) \]
+\end{lem}
+
+\begin{lem}\autolabel
+	Schreibe
+	\[ n! = \prod_{p \leq n} p^{e(p)}. \] Dann gilt
+	\[ e(p) = \sum_{k \geq 1} \left\lfloor \frac{n}{p^k} \right\rfloor. \]
+\end{lem}
